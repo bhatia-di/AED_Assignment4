@@ -22,6 +22,13 @@ public class Person {
         this.personId = UUID.randomUUID().toString();
     }
 
+    public Person(String personId, String name, int age,String community, String city, int zipcode, String address) {
+        this.personId = personId;
+        this.name = name;
+        this.age = age;
+        this.house = new House( community,  city,  zipcode,  address);
+    }
+
     /**
     * Accept DOB/ Gender/ phone
     * */

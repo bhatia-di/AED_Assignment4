@@ -75,8 +75,15 @@ public class AdminScreen extends javax.swing.JFrame {
         zipCodeTextField = new javax.swing.JTextField();
         communityLabel = new javax.swing.JLabel();
         communityTextField = new javax.swing.JTextField();
-        patientJPanel = new javax.swing.JPanel();
         encounterJPanel = new javax.swing.JPanel();
+        patientJPanel = new javax.swing.JPanel();
+        patientDirectoryPatientTabLabel = new javax.swing.JLabel();
+        personDirectoryPatTabScollPanel = new javax.swing.JScrollPane();
+        personDirPatTabTable = new javax.swing.JTable();
+        markPersonAsPatientButton = new javax.swing.JButton();
+        personDirectoryPatientTabLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -264,7 +271,7 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(communityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(personJPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                         .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cityLabel)
                             .addComponent(cityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -281,9 +288,6 @@ public class AdminScreen extends javax.swing.JFrame {
 
         adminScreenTabbedPane.addTab("Person", personJPanel);
 
-        patientJPanel.setLayout(new java.awt.BorderLayout());
-        adminScreenTabbedPane.addTab("Patient", patientJPanel);
-
         javax.swing.GroupLayout encounterJPanelLayout = new javax.swing.GroupLayout(encounterJPanel);
         encounterJPanel.setLayout(encounterJPanelLayout);
         encounterJPanelLayout.setHorizontalGroup(
@@ -292,19 +296,92 @@ public class AdminScreen extends javax.swing.JFrame {
         );
         encounterJPanelLayout.setVerticalGroup(
             encounterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
+            .addGap(0, 913, Short.MAX_VALUE)
         );
 
         adminScreenTabbedPane.addTab("Vital Signs", encounterJPanel);
+
+        patientJPanel.setAutoscrolls(true);
+
+        patientDirectoryPatientTabLabel.setText("Patient Directory");
+
+        personDirPatTabTable.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        personDirPatTabTable.setForeground(new java.awt.Color(0, 0, 102));
+        personDirPatTabTable.setModel(personDirectoryTableModel);
+        personDirPatTabTable.setRowHeight(40);
+        personDirPatTabTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        personDirectoryPatTabScollPanel.setViewportView(personDirPatTabTable);
+
+        markPersonAsPatientButton.setText("Mark Person as Patient");
+        markPersonAsPatientButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                markPersonAsPatientButtonActionPerformed(evt);
+            }
+        });
+
+        personDirectoryPatientTabLabel.setText("Person Directory");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout patientJPanelLayout = new javax.swing.GroupLayout(patientJPanel);
+        patientJPanel.setLayout(patientJPanelLayout);
+        patientJPanelLayout.setHorizontalGroup(
+            patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientJPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(patientJPanelLayout.createSequentialGroup()
+                        .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(markPersonAsPatientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(385, Short.MAX_VALUE))
+            .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(patientJPanelLayout.createSequentialGroup()
+                    .addGap(36, 36, 36)
+                    .addComponent(personDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1360, Short.MAX_VALUE)))
+        );
+        patientJPanelLayout.setVerticalGroup(
+            patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientJPanelLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(markPersonAsPatientButton))
+                .addGap(18, 18, 18)
+                .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(patientJPanelLayout.createSequentialGroup()
+                    .addGap(28, 28, 28)
+                    .addComponent(personDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(848, Short.MAX_VALUE)))
+        );
+
+        adminScreenTabbedPane.addTab("Patient", patientJPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(adminScreenTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,6 +516,12 @@ public class AdminScreen extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_saveChangesButtonActionPerformed
+
+    private void markPersonAsPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_markPersonAsPatientButtonActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_markPersonAsPatientButtonActionPerformed
     
     
     private void populateTableHistory() {
@@ -546,10 +629,17 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JButton createButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JPanel encounterJPanel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton markPersonAsPatientButton;
+    private javax.swing.JLabel patientDirectoryPatientTabLabel;
     private javax.swing.JPanel patientJPanel;
     private javax.swing.JLabel personDirAdminHeaderLabel;
     private javax.swing.JLabel personDirLabel;
+    private javax.swing.JTable personDirPatTabTable;
     private javax.swing.JTable personDirTable;
+    private javax.swing.JScrollPane personDirectoryPatTabScollPanel;
+    private javax.swing.JLabel personDirectoryPatientTabLabel;
     private javax.swing.JScrollPane personDirectoryScollPanel;
     private javax.swing.JPanel personJPanel;
     private javax.swing.JLabel personNameLabel;
