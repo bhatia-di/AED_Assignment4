@@ -14,6 +14,7 @@ public class Person {
     private String personId;
     private String name;
     private int age;
+    private House house;
 
 
     public String getPersonId() {
@@ -40,6 +41,9 @@ public class Person {
         this.age = age;
     }
     
+    public void setHouse (String community, String city, String zipcode, String address) {
+        this.house = new House(community, city, zipcode, address);
+    }
     
     
 }
