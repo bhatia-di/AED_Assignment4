@@ -5,6 +5,10 @@
  */
 package aed_assignment4.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 /**
  *
  * @author 18577
@@ -12,8 +16,20 @@ package aed_assignment4.model;
 public class Patient extends Person {
     
     private String patientID;
-    private String primaryDoctorName;
-    private String prefferedPharmacy;
+    private String doctorName;
+    private ArrayList<String> allergies;
+
+    public Patient() {
+        this.patientID = UUID.randomUUID().toString();
+    }
+
+    public ArrayList<String> getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(ArrayList<String> allergies) {
+        this.allergies = allergies;
+    }
 
     public String getPatientID() {
         return patientID;
@@ -23,20 +39,13 @@ public class Patient extends Person {
         this.patientID = patientID;
     }
 
-    public String getPrimaryDoctorName() {
-        return primaryDoctorName;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setPrimaryDoctorName(String primaryDoctorName) {
-        this.primaryDoctorName = primaryDoctorName;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
-    public String getPrefferedPharmacy() {
-        return prefferedPharmacy;
-    }
 
-    public void setPrefferedPharmacy(String prefferedPharmacy) {
-        this.prefferedPharmacy = prefferedPharmacy;
-    }
-    
 }

@@ -5,6 +5,8 @@
  */
 package aed_assignment4.model;
 
+import java.util.UUID;
+
 /**
  *
  * @author 18577
@@ -16,6 +18,13 @@ public class Person {
     private int age;
     private House house;
 
+    public Person() {
+        this.personId = UUID.randomUUID().toString();
+    }
+
+    /**
+    * Accept DOB/ Gender/ phone
+    * */
 
     public String getPersonId() {
         return personId;
