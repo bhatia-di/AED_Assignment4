@@ -5,18 +5,43 @@
  */
 package aed_assignment4.userInterface;
 
+import aed_assignment4.model.Person;
+import aed_assignment4.model.PersonDirectory;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 18577
  */
 public class AdminScreen extends javax.swing.JFrame {
+    
+        DefaultTableModel personDirectoryTableModel;
+        PersonDirectory personDirectory;
+
 
     /**
      * Creates new form AdminScreen
      */
     public AdminScreen() {
+        this.personDirectory = new PersonDirectory();
+        initPersonDirModel();
         initComponents();
     }
+    
+    private void initPersonDirModel() {
+        personDirectoryTableModel = new DefaultTableModel();
+        personDirectoryTableModel.addColumn("Name");
+        personDirectoryTableModel.addColumn("Age");
+        personDirectoryTableModel.addColumn("Community");
+        personDirectoryTableModel.addColumn("City");
+        personDirectoryTableModel.addColumn("Address");
+        personDirectoryTableModel.addColumn("Zip Code");
+
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,20 +54,229 @@ public class AdminScreen extends javax.swing.JFrame {
 
         adminScreenTabbedPane = new javax.swing.JTabbedPane();
         personJPanel = new javax.swing.JPanel();
+        personDirectoryScollPanel = new javax.swing.JScrollPane();
+        personDirTable = new javax.swing.JTable();
+        createButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        viewButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        personDirLabel = new javax.swing.JLabel();
+        personDirAdminHeaderLabel = new javax.swing.JLabel();
+        personNameLabel = new javax.swing.JLabel();
+        cityTextField = new javax.swing.JTextField();
+        ageLabel = new javax.swing.JLabel();
+        ageSlider = new javax.swing.JSlider();
+        saveChangesButton = new javax.swing.JButton();
+        cityLabel = new javax.swing.JLabel();
+        personNameTextField = new javax.swing.JTextField();
+        addressLabel = new javax.swing.JLabel();
+        addressTextField = new javax.swing.JTextField();
+        zipCodeLabel = new javax.swing.JLabel();
+        zipCodeTextField = new javax.swing.JTextField();
+        communityLabel = new javax.swing.JLabel();
+        communityTextField = new javax.swing.JTextField();
         patientJPanel = new javax.swing.JPanel();
         encounterJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        personDirTable.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        personDirTable.setForeground(new java.awt.Color(0, 0, 102));
+        personDirTable.setModel(personDirectoryTableModel);
+        personDirTable.setRowHeight(40);
+        personDirTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        personDirectoryScollPanel.setViewportView(personDirTable);
+
+        createButton.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        createButton.setForeground(new java.awt.Color(0, 0, 102));
+        createButton.setText("Create");
+        createButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createButtonActionPerformed(evt);
+            }
+        });
+
+        updateButton.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(0, 0, 102));
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
+        viewButton.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        viewButton.setForeground(new java.awt.Color(0, 0, 102));
+        viewButton.setText("View ");
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(0, 0, 102));
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
+        personDirLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        personDirLabel.setForeground(new java.awt.Color(0, 0, 102));
+        personDirLabel.setText("Person Directory");
+
+        personDirAdminHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        personDirAdminHeaderLabel.setForeground(new java.awt.Color(0, 0, 102));
+        personDirAdminHeaderLabel.setText(" ");
+
+        personNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        personNameLabel.setForeground(new java.awt.Color(0, 0, 102));
+        personNameLabel.setText("Name :");
+
+        cityTextField.setForeground(new java.awt.Color(0, 0, 102));
+        cityTextField.setText(" ");
+
+        ageLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ageLabel.setForeground(new java.awt.Color(0, 0, 102));
+        ageLabel.setText("Age:");
+
+        ageSlider.setForeground(new java.awt.Color(0, 0, 102));
+        ageSlider.setMinimum(1);
+        ageSlider.setMinorTickSpacing(1);
+        ageSlider.setPaintLabels(true);
+        ageSlider.setSnapToTicks(true);
+        ageSlider.setToolTipText("");
+
+        saveChangesButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        saveChangesButton.setText("Save");
+        saveChangesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveChangesButtonActionPerformed(evt);
+            }
+        });
+
+        cityLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cityLabel.setForeground(new java.awt.Color(0, 0, 102));
+        cityLabel.setText("City: ");
+
+        personNameTextField.setForeground(new java.awt.Color(0, 0, 102));
+        personNameTextField.setText(" ");
+
+        addressLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addressLabel.setForeground(new java.awt.Color(0, 0, 102));
+        addressLabel.setText("Address: ");
+
+        addressTextField.setForeground(new java.awt.Color(0, 0, 102));
+        addressTextField.setText(" ");
+
+        zipCodeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        zipCodeLabel.setForeground(new java.awt.Color(0, 0, 102));
+        zipCodeLabel.setText("Zip Code: ");
+
+        zipCodeTextField.setForeground(new java.awt.Color(0, 0, 102));
+        zipCodeTextField.setText(" ");
+
+        communityLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        communityLabel.setForeground(new java.awt.Color(0, 0, 102));
+        communityLabel.setText("Community: ");
+
+        communityTextField.setForeground(new java.awt.Color(0, 0, 102));
+        communityTextField.setText(" ");
+
         javax.swing.GroupLayout personJPanelLayout = new javax.swing.GroupLayout(personJPanel);
         personJPanel.setLayout(personJPanelLayout);
         personJPanelLayout.setHorizontalGroup(
             personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1339, Short.MAX_VALUE)
+            .addGroup(personJPanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(personDirectoryScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personDirLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personDirAdminHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(personJPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(createButton)
+                .addGap(18, 18, 18)
+                .addComponent(updateButton)
+                .addGap(18, 18, 18)
+                .addComponent(viewButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deleteButton)
+                .addGap(47, 47, 47))
+            .addGroup(personJPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(saveChangesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(personJPanelLayout.createSequentialGroup()
+                        .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(personNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(personJPanelLayout.createSequentialGroup()
+                                .addComponent(cityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(zipCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(zipCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ageSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(personNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(personJPanelLayout.createSequentialGroup()
+                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(communityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(communityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         personJPanelLayout.setVerticalGroup(
             personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
+            .addGroup(personJPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(personDirLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(personDirectoryScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteButton)
+                    .addComponent(updateButton)
+                    .addComponent(viewButton)
+                    .addComponent(createButton)
+                    .addComponent(personDirAdminHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(personNameLabel)
+                    .addComponent(personNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ageLabel)
+                    .addComponent(ageSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel)
+                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(communityLabel)
+                    .addComponent(communityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(personJPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cityLabel)
+                            .addComponent(cityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(personJPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(zipCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(zipCodeLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(saveChangesButton)
+                .addGap(14, 14, 14))
         );
 
         adminScreenTabbedPane.addTab("Person", personJPanel);
@@ -54,7 +288,7 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterJPanel.setLayout(encounterJPanelLayout);
         encounterJPanelLayout.setHorizontalGroup(
             encounterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1339, Short.MAX_VALUE)
+            .addGap(0, 1535, Short.MAX_VALUE)
         );
         encounterJPanelLayout.setVerticalGroup(
             encounterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,8 +303,8 @@ public class AdminScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(adminScreenTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(adminScreenTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,6 +317,187 @@ public class AdminScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void updateAdminHeader(String text) {
+        personDirAdminHeaderLabel.setText(text);
+    }
+    
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+        // TODO add your handling code here:
+        updateAdminHeader("Create Person record");
+
+    }//GEN-LAST:event_createButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        updateAdminHeader("Update Person record");
+
+        int selectedRowIndex = personDirTable.getSelectedRow();
+
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null, "No record selected to update the row", "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        }
+
+        setValuesInForm(selectedRowIndex);
+
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    
+    private void setValuesInForm(int selectedRowIndex) {
+        Person perRecord = personDirectory.getPersonAtIndex(selectedRowIndex);
+        personNameTextField.setText(perRecord.getName());
+        ageSlider.setValue(perRecord.getAge());
+        addressTextField.setText(perRecord.getHouse().getAddress());
+        zipCodeTextField.setText(perRecord.getHouse().getCommunity());
+        cityTextField.setText(perRecord.getHouse().getCity());
+        zipCodeTextField.setText(String.valueOf(perRecord.getHouse().getZipcode()));
+             
+    }
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        // TODO add your handling code here:
+        updateAdminHeader("Viewing record below");
+
+        int selectedRowIndex = personDirTable.getSelectedRow();
+
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null, "No record selected to view the row", "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        }
+
+        setValuesInForm(selectedRowIndex);
+    }//GEN-LAST:event_viewButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        updateAdminHeader("Deleting selected record.");
+
+        int selectedRowIndex = personDirTable.getSelectedRow();
+
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null,
+                "No record selected to delete the row",
+                "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        }
+
+        int response = JOptionPane.showConfirmDialog(null, "Do you want to delete selected record?");
+        if(response == 0) personDirectory.removePersonAtIndex(selectedRowIndex);
+
+        populateTableHistory();
+        //populateSearchTableHistory(personDirectory.getCars());
+
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void saveChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesButtonActionPerformed
+        // TODO add your handling code here:
+
+        if (personDirAdminHeaderLabel.getText().contains("Create")) {
+
+            ArrayList<Person> personDir = personDirectory.getPeople();
+            Person person = new Person();
+            int resp = saveChangesInPersonAndReturnPerson(person);
+            if (resp == 1) {
+
+                personDir.add(person);
+
+                personDirectory.setPersons(personDir);
+
+                populateTableHistory();
+                JOptionPane.showConfirmDialog(null, "Created record successfully!", "Error!",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+
+                //populateSearchTableHistory(carCatalog.getCars());
+
+            }
+
+        }
+
+        if (personDirAdminHeaderLabel.getText().contains("Update")) {
+            int selectedIndex = personDirTable.getSelectedRow();
+            Person personRecord = personDirectory.getPersonAtIndex(selectedIndex);
+            int resp = saveChangesInPersonAndReturnPerson(personRecord);
+            if (resp == 1) {
+                personDirectory.setPersonAtIndex(selectedIndex, personRecord);
+                populateTableHistory();
+
+                JOptionPane.showConfirmDialog(null, "Record updated successfully!", "Error!",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+
+                //populateSearchTableHistory(carCatalog.getCars());
+
+            }
+
+        }
+
+    }//GEN-LAST:event_saveChangesButtonActionPerformed
+    
+    
+    private void populateTableHistory() {
+        
+        personDirectoryTableModel.setRowCount(0);
+
+        for(Person perRecord: personDirectory.getPeople()) {
+            String[] rowData = {
+                perRecord.getName(), 
+                Integer.toString(perRecord.getAge()),
+                perRecord.getHouse().getCommunity(),
+                perRecord.getHouse().getCity(),
+                perRecord.getHouse().getAddress(),
+                Integer.toString(perRecord.getHouse().getZipcode())
+                };
+            personDirectoryTableModel.addRow(rowData);
+                                                   
+        
+      }
+        
+    }    
+    
+    
+    private int saveChangesInPersonAndReturnPerson(Person personRecord) {
+
+        String name = personNameTextField.getText().trim();
+        int age = ageSlider.getValue();
+        String address = addressTextField.getText().trim();
+        String community = communityTextField.getText().trim();
+        String zipCode = zipCodeTextField.getText().trim();
+        String city = cityTextField.getText().trim();
+
+        if (name.isEmpty()) {
+
+            JOptionPane.showConfirmDialog(null, "Please verify values for Person name. It should non-empty.", "Error!",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+            return 0;
+
+        }
+
+        if (community.isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Please verify values for Person community. It should non-empty.", "Error!",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+            return 0;
+
+
+        }
+
+
+
+        personRecord.setName(name);
+        personRecord.setHouse(community, city, Integer.parseInt(zipCode), address);
+        personRecord.setAge(age);
+        
+        return 1;
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -119,9 +534,30 @@ public class AdminScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JTextField addressTextField;
     private javax.swing.JTabbedPane adminScreenTabbedPane;
+    private javax.swing.JLabel ageLabel;
+    private javax.swing.JSlider ageSlider;
+    private javax.swing.JLabel cityLabel;
+    private javax.swing.JTextField cityTextField;
+    private javax.swing.JLabel communityLabel;
+    private javax.swing.JTextField communityTextField;
+    private javax.swing.JButton createButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JPanel encounterJPanel;
     private javax.swing.JPanel patientJPanel;
+    private javax.swing.JLabel personDirAdminHeaderLabel;
+    private javax.swing.JLabel personDirLabel;
+    private javax.swing.JTable personDirTable;
+    private javax.swing.JScrollPane personDirectoryScollPanel;
     private javax.swing.JPanel personJPanel;
+    private javax.swing.JLabel personNameLabel;
+    private javax.swing.JTextField personNameTextField;
+    private javax.swing.JButton saveChangesButton;
+    private javax.swing.JButton updateButton;
+    private javax.swing.JButton viewButton;
+    private javax.swing.JLabel zipCodeLabel;
+    private javax.swing.JTextField zipCodeTextField;
     // End of variables declaration//GEN-END:variables
 }

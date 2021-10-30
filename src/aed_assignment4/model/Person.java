@@ -41,9 +41,12 @@ public class Person {
         this.age = age;
     }
     
-    public void setHouse (String community, String city, String zipcode, String address) {
+    public void setHouse (String community, String city, int zipcode, String address) {
         this.house = new House(community, city, zipcode, address);
     }
     
+    public House getHouse() {
+    return this.house;
+    }
     
 }

@@ -12,10 +12,45 @@ package aed_assignment4.model;
 public class House {
     private String community;
     private String city;
-    private String zipcode;
-    private String address;
+    private int zipcode;
 
-    public House(String community, String city, String zipcode, String address) {
+    public String getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(String community) {
+        this.community = community;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    private String address;
+    
+    
+    
+
+    public House(String community, String city, int zipcode, String address) {
         this.community = community;
         this.city = city;
         this.zipcode = zipcode;
