@@ -13,7 +13,8 @@ public class Person {
     
     private String personId;
     private String name;
-    
+    private int age;
+
 
     public String getPersonId() {
         return personId;
@@ -38,7 +39,6 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
-    private int age;
     
     
     
