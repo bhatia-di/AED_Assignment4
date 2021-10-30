@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
  * @author 18577
  */
 public class Encounter {
+    
     VitalSigns vitalSigns;
     LocalDateTime vitalSignsTimeStamp;
     

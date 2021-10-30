@@ -61,7 +61,7 @@ public class AdminScreen extends javax.swing.JFrame {
             .addGap(0, 685, Short.MAX_VALUE)
         );
 
-        adminScreenTabbedPane.addTab("Encounter", encounterJPanel);
+        adminScreenTabbedPane.addTab("Vital Signs", encounterJPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

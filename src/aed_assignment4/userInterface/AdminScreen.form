@@ -81,8 +81,8 @@
         <Container class="javax.swing.JPanel" name="encounterJPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Encounter">
-                <Property name="tabTitle" type="java.lang.String" value="Encounter"/>
+              <JTabbedPaneConstraints tabName="Vital Signs">
+                <Property name="tabTitle" type="java.lang.String" value="Vital Signs"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
