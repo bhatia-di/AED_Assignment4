@@ -9,7 +9,7 @@ package aed_assignment4.model;
  *
  * @author 18577
  */
-public class Patient {
+public class Patient extends Person {
     
     private String patientID;
     private String primaryDoctorName;
