@@ -14,6 +14,13 @@ public class House {
     private String city;
     private String zipcode;
     private String address;
+
+    public House(String community, String city, String zipcode, String address) {
+        this.community = community;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.address = address;
+    }
     
     
 }
