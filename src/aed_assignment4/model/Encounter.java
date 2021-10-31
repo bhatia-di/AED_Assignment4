@@ -12,7 +12,9 @@ import java.time.LocalDateTime;
  * @author 18577
  */
 public class Encounter {
-    
+    // Map <patientId, ENcounterHistory>
+    // getPatientDir - list of patientIds
+    // map - using patient id - encounterhistory get 
     VitalSigns vitalSigns;
     LocalDateTime vitalSignsTimeStamp;
     

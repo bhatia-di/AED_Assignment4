@@ -5,6 +5,8 @@
  */
 package aed_assignment4.userInterface;
 
+import aed_assignment4.model.Patient;
+import aed_assignment4.model.PatientDirectory;
 import aed_assignment4.model.Person;
 import aed_assignment4.model.PersonDirectory;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class AdminScreen extends javax.swing.JFrame {
         DefaultTableModel personDirectoryTableModel;
         DefaultTableModel patientDirTableModel;
         PersonDirectory personDirectory;
+        PatientDirectory patientDirectory;
 
 
     /**
@@ -27,6 +30,7 @@ public class AdminScreen extends javax.swing.JFrame {
      */
     public AdminScreen() {
         this.personDirectory = new PersonDirectory();
+        this.patientDirectory = new PatientDirectory();
         initPatientDirModel();
         initPersonDirModel();
         initComponents();
@@ -87,15 +91,11 @@ public class AdminScreen extends javax.swing.JFrame {
         zipCodeTextField = new javax.swing.JTextField();
         communityLabel = new javax.swing.JLabel();
         communityTextField = new javax.swing.JTextField();
-        encounterJPanel = new javax.swing.JPanel();
         patientJPanel = new javax.swing.JPanel();
-        patientDirectoryPatientTabLabel = new javax.swing.JLabel();
         personDirectoryPatTabScollPanel = new javax.swing.JScrollPane();
         personDirPatTabTable = new javax.swing.JTable();
         markPersonAsPatientButton = new javax.swing.JButton();
         personDirectoryPatientTabLabel = new javax.swing.JLabel();
-        patientDirectoryScrollPane1 = new javax.swing.JScrollPane();
-        patientDirectoryTable = new javax.swing.JTable();
         doctorNameLabel = new javax.swing.JLabel();
         doctorNameTextField = new javax.swing.JTextField();
         allergyJListPane = new javax.swing.JScrollPane();
@@ -103,6 +103,11 @@ public class AdminScreen extends javax.swing.JFrame {
         allergyLabel = new javax.swing.JLabel();
         selectedPatientNameLabel = new javax.swing.JLabel();
         selectedPatientValue = new javax.swing.JLabel();
+        saveAsPatientButton = new javax.swing.JButton();
+        patientDirectoryTab = new javax.swing.JPanel();
+        patientDirectoryPatientTabLabel = new javax.swing.JLabel();
+        patientDirectoryScrollPane1 = new javax.swing.JScrollPane();
+        patientDirectoryTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -297,27 +302,12 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(zipCodeLabel))
                 .addGap(39, 39, 39)
                 .addComponent(saveChangesButton)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(402, Short.MAX_VALUE))
         );
 
         adminScreenTabbedPane.addTab("Person", personJPanel);
 
-        javax.swing.GroupLayout encounterJPanelLayout = new javax.swing.GroupLayout(encounterJPanel);
-        encounterJPanel.setLayout(encounterJPanelLayout);
-        encounterJPanelLayout.setHorizontalGroup(
-            encounterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1535, Short.MAX_VALUE)
-        );
-        encounterJPanelLayout.setVerticalGroup(
-            encounterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 913, Short.MAX_VALUE)
-        );
-
-        adminScreenTabbedPane.addTab("Vital Signs", encounterJPanel);
-
         patientJPanel.setAutoscrolls(true);
-
-        patientDirectoryPatientTabLabel.setText("Patient Directory");
 
         personDirPatTabTable.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         personDirPatTabTable.setForeground(new java.awt.Color(0, 0, 102));
@@ -334,9 +324,6 @@ public class AdminScreen extends javax.swing.JFrame {
         });
 
         personDirectoryPatientTabLabel.setText("Person Directory");
-
-        patientDirectoryTable.setModel(patientDirTableModel);
-        patientDirectoryScrollPane1.setViewportView(patientDirectoryTable);
 
         doctorNameLabel.setText(" Doctor Name: ");
 
@@ -355,6 +342,13 @@ public class AdminScreen extends javax.swing.JFrame {
 
         selectedPatientValue.setText(" ");
 
+        saveAsPatientButton.setText("Save as Patient");
+        saveAsPatientButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAsPatientButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout patientJPanelLayout = new javax.swing.GroupLayout(patientJPanel);
         patientJPanel.setLayout(patientJPanelLayout);
         patientJPanelLayout.setHorizontalGroup(
@@ -362,78 +356,93 @@ public class AdminScreen extends javax.swing.JFrame {
             .addGroup(patientJPanelLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(patientJPanelLayout.createSequentialGroup()
-                        .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(451, Short.MAX_VALUE))
+                    .addGroup(patientJPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(patientJPanelLayout.createSequentialGroup()
-                                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(patientJPanelLayout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addComponent(allergyLabel)
-                                        .addGap(37, 37, 37))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientJPanelLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(doctorNameLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(doctorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(allergyJListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(allergyLabel)
+                                .addGap(74, 74, 74)
+                                .addComponent(allergyJListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(patientJPanelLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(patientJPanelLayout.createSequentialGroup()
-                                        .addComponent(selectedPatientNameLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(selectedPatientValue, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(markPersonAsPatientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(355, Short.MAX_VALUE))
+                                .addComponent(selectedPatientNameLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(selectedPatientValue, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(markPersonAsPatientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(patientJPanelLayout.createSequentialGroup()
+                                .addComponent(doctorNameLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(doctorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(saveAsPatientButton))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientJPanelLayout.createSequentialGroup()
                     .addGap(36, 36, 36)
                     .addComponent(personDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1360, Short.MAX_VALUE)))
+                    .addContainerGap(1365, Short.MAX_VALUE)))
         );
         patientJPanelLayout.setVerticalGroup(
             patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientJPanelLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(markPersonAsPatientButton)
+                .addGap(18, 18, 18)
+                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectedPatientNameLabel)
+                    .addComponent(selectedPatientValue))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(doctorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(doctorNameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(allergyJListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(patientJPanelLayout.createSequentialGroup()
-                        .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(patientJPanelLayout.createSequentialGroup()
-                        .addComponent(markPersonAsPatientButton)
-                        .addGap(26, 26, 26)
-                        .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(selectedPatientNameLabel)
-                            .addComponent(selectedPatientValue))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientJPanelLayout.createSequentialGroup()
-                                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(doctorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(doctorNameLabel))
-                                .addGap(33, 33, 33)
-                                .addComponent(allergyJListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientJPanelLayout.createSequentialGroup()
-                                .addComponent(allergyLabel)
-                                .addGap(162, 162, 162)))))
-                .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addGap(57, 57, 57)
+                        .addComponent(allergyLabel)))
+                .addGap(30, 30, 30)
+                .addComponent(saveAsPatientButton)
+                .addGap(405, 405, 405))
             .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientJPanelLayout.createSequentialGroup()
                     .addGap(28, 28, 28)
                     .addComponent(personDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(848, Short.MAX_VALUE)))
+                    .addContainerGap(1066, Short.MAX_VALUE)))
         );
 
         adminScreenTabbedPane.addTab("Patient", patientJPanel);
+
+        patientDirectoryPatientTabLabel.setText("Patient Directory");
+
+        patientDirectoryTable.setModel(patientDirTableModel);
+        patientDirectoryScrollPane1.setViewportView(patientDirectoryTable);
+
+        javax.swing.GroupLayout patientDirectoryTabLayout = new javax.swing.GroupLayout(patientDirectoryTab);
+        patientDirectoryTab.setLayout(patientDirectoryTabLayout);
+        patientDirectoryTabLayout.setHorizontalGroup(
+            patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(388, Short.MAX_VALUE))
+        );
+        patientDirectoryTabLayout.setVerticalGroup(
+            patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(649, Short.MAX_VALUE))
+        );
+
+        adminScreenTabbedPane.addTab("Patient Directory", patientDirectoryTab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -454,83 +463,24 @@ public class AdminScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void updateAdminHeader(String text) {
-        personDirAdminHeaderLabel.setText(text);
-    }
-    
-    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+    private void markPersonAsPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_markPersonAsPatientButtonActionPerformed
         // TODO add your handling code here:
-        updateAdminHeader("Create Person record");
-
-    }//GEN-LAST:event_createButtonActionPerformed
-
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
-        updateAdminHeader("Update Person record");
-
-        int selectedRowIndex = personDirTable.getSelectedRow();
-
-        if(selectedRowIndex == -1) {
-            JOptionPane.showConfirmDialog(null, "No record selected to update the row", "Error!",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.PLAIN_MESSAGE);
-            return;
-        }
-
-        setValuesInForm(selectedRowIndex);
-
-    }//GEN-LAST:event_updateButtonActionPerformed
-
-    
-    private void setValuesInForm(int selectedRowIndex) {
-        Person perRecord = personDirectory.getPersonAtIndex(selectedRowIndex);
-        personNameTextField.setText(perRecord.getName());
-        ageSlider.setValue(perRecord.getAge());
-        addressTextField.setText(perRecord.getHouse().getAddress());
-        zipCodeTextField.setText(perRecord.getHouse().getCommunity());
-        cityTextField.setText(perRecord.getHouse().getCity());
-        zipCodeTextField.setText(String.valueOf(perRecord.getHouse().getZipcode()));
-             
-    }
-    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
-        // TODO add your handling code here:
-        updateAdminHeader("Viewing record below");
-
-        int selectedRowIndex = personDirTable.getSelectedRow();
-
-        if(selectedRowIndex == -1) {
-            JOptionPane.showConfirmDialog(null, "No record selected to view the row", "Error!",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.PLAIN_MESSAGE);
-            return;
-        }
-
-        setValuesInForm(selectedRowIndex);
-    }//GEN-LAST:event_viewButtonActionPerformed
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
-        updateAdminHeader("Deleting selected record.");
-
-        int selectedRowIndex = personDirTable.getSelectedRow();
+        int selectedRowIndex = personDirPatTabTable.getSelectedRow();
 
         if(selectedRowIndex == -1) {
             JOptionPane.showConfirmDialog(null,
-                "No record selected to delete the row",
+                "No record selected to mark as patient",
                 "Error!",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.PLAIN_MESSAGE);
             return;
+        } else {
+
+            Person selectedPer = personDirectory.getPersonAtIndex(selectedRowIndex);
+            selectedPatientValue.setText(selectedPer.getName());
         }
 
-        int response = JOptionPane.showConfirmDialog(null, "Do you want to delete selected record?");
-        if(response == 0) personDirectory.removePersonAtIndex(selectedRowIndex);
-
-        populateTableHistory();
-        //populateSearchTableHistory(personDirectory.getCars());
-
-    }//GEN-LAST:event_deleteButtonActionPerformed
+    }//GEN-LAST:event_markPersonAsPatientButtonActionPerformed
 
     private void saveChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesButtonActionPerformed
         // TODO add your handling code here:
@@ -574,34 +524,102 @@ public class AdminScreen extends javax.swing.JFrame {
             }
 
         }
-
     }//GEN-LAST:event_saveChangesButtonActionPerformed
 
-    private void markPersonAsPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_markPersonAsPatientButtonActionPerformed
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = personDirPatTabTable.getSelectedRow();
+        updateAdminHeader("Deleting selected record.");
+
+        int selectedRowIndex = personDirTable.getSelectedRow();
 
         if(selectedRowIndex == -1) {
             JOptionPane.showConfirmDialog(null,
-                "No record selected to mark as patient",
+                "No record selected to delete the row",
                 "Error!",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.PLAIN_MESSAGE);
             return;
-        } else {
-        
-        Person selectedPer = personDirectory.getPersonAtIndex(selectedRowIndex);
-        selectedPatientValue.setText(selectedPer.getName());
-        
-        
         }
+
+        int response = JOptionPane.showConfirmDialog(null, "Do you want to delete selected record?");
+        if(response == 0) personDirectory.removePersonAtIndex(selectedRowIndex);
+
+        populateTableHistory();
+        //populateSearchTableHistory(personDirectory.getCars());
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        // TODO add your handling code here:
+        updateAdminHeader("Viewing record below");
+
+        int selectedRowIndex = personDirTable.getSelectedRow();
+
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null, "No record selected to view the row", "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        }
+
+        setValuesInForm(selectedRowIndex);
+    }//GEN-LAST:event_viewButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        updateAdminHeader("Update Person record");
+
+        int selectedRowIndex = personDirTable.getSelectedRow();
+
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null, "No record selected to update the row", "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        }
+
+        setValuesInForm(selectedRowIndex);
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+        // TODO add your handling code here:
+        updateAdminHeader("Create Person record");
+    }//GEN-LAST:event_createButtonActionPerformed
+
+    private void saveAsPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsPatientButtonActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Patient> newPatientList = patientDirectory.getPatients();
+         
+        int selectedRowIndex = personDirPatTabTable.getSelectedRow();
+        Person selectedPerson = personDirectory.getPersonAtIndex(selectedRowIndex);
+        Patient patient = new Patient(selectedPerson);
+        patient.setDoctorName(doctorNameTextField.getText());
+        patient.setAllergies(allergyList.getSelectedValuesList());
+        newPatientList.add(patient);
+        
+        patientDirectory.setPersons(newPatientList);
+        System.out.println(newPatientList.size());
         
         
 
         
-        
-    }//GEN-LAST:event_markPersonAsPatientButtonActionPerformed
+    }//GEN-LAST:event_saveAsPatientButtonActionPerformed
+
     
+    private void updateAdminHeader(String text) {
+        personDirAdminHeaderLabel.setText(text);
+    }
+    
+    
+    private void setValuesInForm(int selectedRowIndex) {
+        Person perRecord = personDirectory.getPersonAtIndex(selectedRowIndex);
+        personNameTextField.setText(perRecord.getName());
+        ageSlider.setValue(perRecord.getAge());
+        addressTextField.setText(perRecord.getHouse().getAddress());
+        zipCodeTextField.setText(perRecord.getHouse().getCommunity());
+        cityTextField.setText(perRecord.getHouse().getCity());
+        zipCodeTextField.setText(String.valueOf(perRecord.getHouse().getZipcode()));
+             
+    }    
     
     private void populateTableHistory() {
         
@@ -712,10 +730,10 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel doctorNameLabel;
     private javax.swing.JTextField doctorNameTextField;
-    private javax.swing.JPanel encounterJPanel;
     private javax.swing.JButton markPersonAsPatientButton;
     private javax.swing.JLabel patientDirectoryPatientTabLabel;
     private javax.swing.JScrollPane patientDirectoryScrollPane1;
+    private javax.swing.JPanel patientDirectoryTab;
     private javax.swing.JTable patientDirectoryTable;
     private javax.swing.JPanel patientJPanel;
     private javax.swing.JLabel personDirAdminHeaderLabel;
@@ -728,6 +746,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JPanel personJPanel;
     private javax.swing.JLabel personNameLabel;
     private javax.swing.JTextField personNameTextField;
+    private javax.swing.JButton saveAsPatientButton;
     private javax.swing.JButton saveChangesButton;
     private javax.swing.JLabel selectedPatientNameLabel;
     private javax.swing.JLabel selectedPatientValue;

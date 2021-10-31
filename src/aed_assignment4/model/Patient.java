@@ -6,6 +6,7 @@
 package aed_assignment4.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -16,18 +17,18 @@ public class Patient extends Person {
     
     private String patientID;
     private String doctorName;
-    private ArrayList<String> allergies;
+    private List<String> allergies;
 
     public Patient(Person p) {
          super(p);
          this.patientID = UUID.randomUUID().toString();
     }
     
-    public ArrayList<String> getAllergies() {
+    public List<String> getAllergies() {
         return allergies;
     }
 
-    public void setAllergies(ArrayList<String> allergies) {
+    public void setAllergies(List<String> allergies) {
         this.allergies = allergies;
     }
 
