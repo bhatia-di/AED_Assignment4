@@ -764,13 +764,30 @@ public class AdminScreen extends javax.swing.JFrame {
         int selectedRowIndex = patientDirectoryTable.getSelectedRow();
         Patient selectedPatient = patientDirectory.getPatientAtIndex(selectedRowIndex);
         String patientId = selectedPatient.getPatientID();
-        EncounterHistory selectedEncounterHistory = encounterList.getEncounterHistoryOfPatient(patientId);
-
+        ArrayList<VitalSigns> vitalSignsHistory = encounterList.getEncounterHistoryOfPatient(patientId)
+                .getVitalSignHistory();
+        populateVitalSignHistory(vitalSignsHistory);
 
         
 
     }//GEN-LAST:event_viewVitalSignHistoryButtonActionPerformed
 
+    private void populateVitalSignHistory(ArrayList<VitalSigns> vitalSignsHistory) {
+
+        vitalSignHistoryTableModel.setRowCount(0);
+        for(VitalSigns vitalSigns: vitalSignsHistory) {
+            String[] rowData = {
+                    Integer.toString(vitalSigns.getRespiratoryRate()),
+                    Integer.toString(vitalSigns.getHeartRate()),
+                    Integer.toString(vitalSigns.getBloodPressure()),
+                    Integer.toString(vitalSigns.getWeight()),
+                    Integer.toString(vitalSigns.getBodyTemperature())
+            };
+            vitalSignHistoryTableModel.addRow(rowData);
+        }
+
+
+    }
     
     private void updateAdminHeader(String text) {
         personDirAdminHeaderLabel.setText(text);
