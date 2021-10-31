@@ -606,8 +606,8 @@
         <Container class="javax.swing.JPanel" name="patientDirectoryTab">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Patient Directory">
-                <Property name="tabTitle" type="java.lang.String" value="Patient Directory"/>
+              <JTabbedPaneConstraints tabName="Manage Encounters">
+                <Property name="tabTitle" type="java.lang.String" value="Manage Encounters"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -618,8 +618,23 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           <Component id="patientDirectoryScrollPane1" alignment="0" min="-2" pref="1124" max="-2" attributes="0"/>
                           <Component id="patientDirectoryPatientTabLabel" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="addVitalSignsButton" alignment="0" min="-2" pref="383" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="bdyTempLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="encounterPatientNameLabel" min="-2" pref="165" max="-2" attributes="0"/>
+                                  <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="weightTextLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="patientNameEncounterValue" min="-2" pref="260" max="-2" attributes="0"/>
+                                  <Component id="bodyTemperatureTextField" min="-2" pref="213" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace pref="388" max="32767" attributes="0"/>
                   </Group>
@@ -631,8 +646,27 @@
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="patientDirectoryPatientTabLabel" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="patientDirectoryScrollPane1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="649" max="32767" attributes="0"/>
+                      <Component id="patientDirectoryScrollPane1" min="-2" pref="279" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="addVitalSignsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="encounterPatientNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="patientNameEncounterValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bdyTempLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bodyTemperatureTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="weightLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="weightTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="508" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -659,6 +693,49 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="addVitalSignsButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Vital Signs"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addVitalSignsButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="encounterPatientNameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Patient Name: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="patientNameEncounterValue">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="bdyTempLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="  Body Temperature: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="bodyTemperatureTextField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="weightLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Weight: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="weightTextLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Save Encounter"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

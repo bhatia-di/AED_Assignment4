@@ -17,5 +17,6 @@ public class VitalSigns {
     private int heartRate;
     private int bloodPressure;
     private int weight;
+    private int bodyTemperature;
     private LocalDateTime lastUpdatedTimeStamp = LocalDateTime.now();
 }
