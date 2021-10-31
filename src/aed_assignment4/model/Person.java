@@ -22,7 +22,14 @@ public class Person {
         this.personId = UUID.randomUUID().toString();
     }
 
-    public Person(String personId, String name, int age,String community, String city, int zipcode, String address) {
+    public Person( Person per) {
+    
+        this.personId = per.getPersonId();
+        this.name = per.getName();
+        this.age = per.getAge();
+        this.house = new House( per.getHouse().getCommunity(),  per.getHouse().getCity(),  per.getHouse().getZipcode(),  per.getHouse().getAddress());
+    }
+    public Person( String personId,  String name, int age,String community, String city, int zipcode, String address) {
         this.personId = personId;
         this.name = name;
         this.age = age;
