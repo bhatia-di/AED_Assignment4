@@ -456,7 +456,7 @@
                               <Component id="markPersonAsPatientButton" min="-2" pref="263" max="-2" attributes="0"/>
                           </Group>
                           <Component id="patientDirectoryPatientTabLabel" min="-2" pref="139" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="1124" max="-2" attributes="0"/>
+                          <Component id="patientDirectoryScrollPane1" alignment="0" min="-2" pref="1124" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="385" max="32767" attributes="0"/>
                   </Group>
@@ -480,7 +480,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="patientDirectoryPatientTabLabel" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      <Component id="patientDirectoryScrollPane1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -544,14 +544,14 @@
                 <Property name="text" type="java.lang.String" value="Person Directory"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+            <Container class="javax.swing.JScrollPane" name="patientDirectoryScrollPane1">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="patientDirectoryTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
