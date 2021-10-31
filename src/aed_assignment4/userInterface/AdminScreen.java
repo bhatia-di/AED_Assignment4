@@ -5,10 +5,12 @@
  */
 package aed_assignment4.userInterface;
 
+import aed_assignment4.model.Encounter;
 import aed_assignment4.model.Patient;
 import aed_assignment4.model.PatientDirectory;
 import aed_assignment4.model.Person;
 import aed_assignment4.model.PersonDirectory;
+import aed_assignment4.model.VitalSigns;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +25,7 @@ public class AdminScreen extends javax.swing.JFrame {
         DefaultTableModel patientDirTableModel;
         PersonDirectory personDirectory;
         PatientDirectory patientDirectory;
+        Encounter encounterList;
 
 
     /**
@@ -31,6 +34,7 @@ public class AdminScreen extends javax.swing.JFrame {
     public AdminScreen() {
         this.personDirectory = new PersonDirectory();
         this.patientDirectory = new PatientDirectory();
+        this.encounterList = new Encounter();
         initPatientDirModel();
         initPersonDirModel();
         initComponents();
@@ -116,7 +120,7 @@ public class AdminScreen extends javax.swing.JFrame {
         bodyTemperatureTextField = new javax.swing.JTextField();
         weightLabel = new javax.swing.JLabel();
         weightTextLabel = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        saveEncounterButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -449,7 +453,12 @@ public class AdminScreen extends javax.swing.JFrame {
 
         weightTextLabel.setText(" ");
 
-        jButton1.setText("Save Encounter");
+        saveEncounterButton.setText("Save Encounter");
+        saveEncounterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveEncounterButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout patientDirectoryTabLayout = new javax.swing.GroupLayout(patientDirectoryTab);
         patientDirectoryTab.setLayout(patientDirectoryTabLayout);
@@ -458,7 +467,7 @@ public class AdminScreen extends javax.swing.JFrame {
             .addGroup(patientDirectoryTabLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(saveEncounterButton)
                     .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addVitalSignsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -469,9 +478,9 @@ public class AdminScreen extends javax.swing.JFrame {
                             .addComponent(weightLabel))
                         .addGap(28, 28, 28)
                         .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(weightTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(patientNameEncounterValue, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(weightTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(388, Short.MAX_VALUE))
         );
         patientDirectoryTabLayout.setVerticalGroup(
@@ -496,7 +505,7 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(weightLabel)
                     .addComponent(weightTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(saveEncounterButton)
                 .addContainerGap(508, Short.MAX_VALUE))
         );
 
@@ -682,10 +691,22 @@ public class AdminScreen extends javax.swing.JFrame {
         
         Patient selectedPatient = patientDirectory.getPatientAtIndex(selectedRowIndex);
         patientNameEncounterValue.setText(selectedPatient.getName());
-        
+              
         
 
     }//GEN-LAST:event_addVitalSignsButtonActionPerformed
+
+    private void saveEncounterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEncounterButtonActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = patientDirectoryTable.getSelectedRow();
+        Patient selectedPatient = patientDirectory.getPatientAtIndex(selectedRowIndex);
+
+        VitalSigns newVitalSigns = new VitalSigns();
+        newVitalSigns.setBodyTemperature(Integer.valueOf(bodyTemperatureTextField.getText().trim()));
+        encounterList.addEncounter(selectedPatient.getPatientID(), newVitalSigns);
+        System.out.println("Encounter List " + encounterList.getEncounterMapSize());
+       
+    }//GEN-LAST:event_saveEncounterButtonActionPerformed
 
     
     private void updateAdminHeader(String text) {
@@ -837,7 +858,6 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JLabel doctorNameLabel;
     private javax.swing.JTextField doctorNameTextField;
     private javax.swing.JLabel encounterPatientNameLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton markPersonAsPatientButton;
     private javax.swing.JLabel patientDirectoryPatientTabLabel;
     private javax.swing.JScrollPane patientDirectoryScrollPane1;
@@ -857,6 +877,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JTextField personNameTextField;
     private javax.swing.JButton saveAsPatientButton;
     private javax.swing.JButton saveChangesButton;
+    private javax.swing.JButton saveEncounterButton;
     private javax.swing.JLabel selectedPatientNameLabel;
     private javax.swing.JLabel selectedPatientValue;
     private javax.swing.JButton updateButton;

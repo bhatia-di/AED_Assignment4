@@ -5,7 +5,6 @@
  */
 package aed_assignment4.model;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +12,22 @@ import java.util.ArrayList;
  * @author 18577
  */
 public class EncounterHistory {
-    ArrayList<Encounter> encounterHistory;
-    LocalDateTime encounteHistoryTimeStamp;
+    ArrayList<VitalSigns> vitalSignHistory;
+
+    public EncounterHistory() {
+        this.vitalSignHistory = new ArrayList<VitalSigns>();
+    }
+    
+    
+    public void addVitalSign(VitalSigns newVitalSign) {
+        vitalSignHistory.add(newVitalSign);
+    }
+    
+    
+    public int getVitalSignsCount() {
+        
+        return vitalSignHistory.size();
+    }
+    
+    
 }

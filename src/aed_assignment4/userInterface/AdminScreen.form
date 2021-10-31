@@ -618,7 +618,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveEncounterButton" min="-2" max="-2" attributes="0"/>
                           <Component id="patientDirectoryScrollPane1" alignment="0" min="-2" pref="1124" max="-2" attributes="0"/>
                           <Component id="patientDirectoryPatientTabLabel" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                           <Component id="addVitalSignsButton" alignment="0" min="-2" pref="383" max="-2" attributes="0"/>
@@ -630,9 +630,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="weightTextLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="patientNameEncounterValue" min="-2" pref="260" max="-2" attributes="0"/>
                                   <Component id="bodyTemperatureTextField" min="-2" pref="213" max="-2" attributes="0"/>
+                                  <Component id="weightTextLabel" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -665,7 +665,7 @@
                           <Component id="weightTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="saveEncounterButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="508" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -731,10 +731,13 @@
                 <Property name="text" type="java.lang.String" value=" "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="saveEncounterButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save Encounter"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveEncounterButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
