@@ -25,9 +25,9 @@ public class PersonDirectory {
     private void initPersonDirectory() {
     
         persons.add(new Person("Paul", 25, "Fenway", "Boston", 9088, "Fenway"));
-        persons.add(new Person("John", 25, "Fenway", "Boston", 9088, "Fenway"));
-        persons.add(new Person("Brain", 25, "Roxbury", "Boston", 9088, "Fenway"));
-        persons.add(new Person("Kelly", 25, "Bolyston", "Boston", 9088, "Fenway"));
+        persons.add(new Person("John", 67, "Fenway", "Boston", 9088, "Fenway"));
+        persons.add(new Person("Brain", 75, "Roxbury", "Boston", 9088, "Fenway"));
+        persons.add(new Person("Kelly", 5, "Bolyston", "Boston", 9088, "Fenway"));
     
     
     }
