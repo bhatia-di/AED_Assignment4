@@ -134,7 +134,13 @@ public class AdminScreen extends javax.swing.JFrame {
         vitalSignHistoryScrollPanel = new javax.swing.JScrollPane();
         vitalSignHistoryTable = new javax.swing.JTable();
         patienthistoryLabel = new javax.swing.JLabel();
+        patientIdNameValueLabel = new javax.swing.JLabel();
+        respiratoryRateLabel = new javax.swing.JLabel();
+        respiratoryRateTextField = new javax.swing.JTextField();
+        heartRateLabel = new javax.swing.JLabel();
+        heartRateTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        bloodPressureTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -486,7 +492,22 @@ public class AdminScreen extends javax.swing.JFrame {
 
         patienthistoryLabel.setText("You are viewing history of : ");
 
-        jLabel1.setText(" ");
+        patientIdNameValueLabel.setText(" ");
+
+        respiratoryRateLabel.setText("Respiratory Rate:");
+
+        respiratoryRateTextField.setText(" ");
+
+        heartRateLabel.setText("Heart Rate:");
+
+        heartRateTextField.setText(" ");
+        heartRateTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                heartRateTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Blood Pressure:");
 
         javax.swing.GroupLayout patientDirectoryTabLayout = new javax.swing.GroupLayout(patientDirectoryTab);
         patientDirectoryTab.setLayout(patientDirectoryTabLayout);
@@ -495,36 +516,48 @@ public class AdminScreen extends javax.swing.JFrame {
             .addGroup(patientDirectoryTabLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(patientDirectoryTabLayout.createSequentialGroup()
-                        .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(patientDirectoryTabLayout.createSequentialGroup()
-                                .addComponent(addVitalSignsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(295, 295, 295)
-                                .addComponent(viewVitalSignHistoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(383, Short.MAX_VALUE))
+                        .addComponent(addVitalSignsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(295, 295, 295)
+                        .addComponent(viewVitalSignHistoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(383, Short.MAX_VALUE))
+            .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(saveEncounterButton)
                             .addGroup(patientDirectoryTabLayout.createSequentialGroup()
-                                .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bdyTempLabel)
-                                    .addComponent(encounterPatientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(weightLabel))
+                                .addComponent(encounterPatientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
-                                .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(patientNameEncounterValue, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(weightTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(patientNameEncounterValue, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vitalSignHistoryScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(patientDirectoryTabLayout.createSequentialGroup()
-                                .addComponent(patienthistoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(342, 342, 342))))
+                            .addComponent(bdyTempLabel)
+                            .addComponent(weightLabel)
+                            .addComponent(heartRateLabel)
+                            .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(respiratoryRateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(28, 28, 28)
+                        .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(respiratoryRateTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(weightTextLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                            .addComponent(heartRateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bloodPressureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vitalSignHistoryScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                        .addComponent(patienthistoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(patientIdNameValueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(342, 342, 342))
         );
         patientDirectoryTabLayout.setVerticalGroup(
             patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,17 +575,29 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(encounterPatientNameLabel)
                     .addComponent(patientNameEncounterValue)
                     .addComponent(patienthistoryLabel)
-                    .addComponent(jLabel1))
+                    .addComponent(patientIdNameValueLabel))
                 .addGap(18, 18, 18)
                 .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientDirectoryTabLayout.createSequentialGroup()
                         .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bdyTempLabel)
-                            .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(respiratoryRateLabel)
+                            .addComponent(respiratoryRateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(heartRateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(heartRateLabel))
+                        .addGap(33, 33, 33)
+                        .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bloodPressureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(38, 38, 38)
                         .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(weightLabel)
                             .addComponent(weightTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bdyTempLabel)
+                            .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(saveEncounterButton))
                     .addComponent(vitalSignHistoryScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -772,6 +817,10 @@ public class AdminScreen extends javax.swing.JFrame {
 
     }//GEN-LAST:event_viewVitalSignHistoryButtonActionPerformed
 
+    private void heartRateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heartRateTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_heartRateTextFieldActionPerformed
+
     private void populateVitalSignHistory(ArrayList<VitalSigns> vitalSignsHistory) {
 
         vitalSignHistoryTableModel.setRowCount(0);
@@ -928,6 +977,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JLabel allergyLabel;
     private javax.swing.JList<String> allergyList;
     private javax.swing.JLabel bdyTempLabel;
+    private javax.swing.JTextField bloodPressureTextField;
     private javax.swing.JTextField bodyTemperatureTextField;
     private javax.swing.JLabel cityLabel;
     private javax.swing.JTextField cityTextField;
@@ -938,12 +988,15 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JLabel doctorNameLabel;
     private javax.swing.JTextField doctorNameTextField;
     private javax.swing.JLabel encounterPatientNameLabel;
+    private javax.swing.JLabel heartRateLabel;
+    private javax.swing.JTextField heartRateTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton markPersonAsPatientButton;
     private javax.swing.JLabel patientDirectoryPatientTabLabel;
     private javax.swing.JScrollPane patientDirectoryScrollPane1;
     private javax.swing.JPanel patientDirectoryTab;
     private javax.swing.JTable patientDirectoryTable;
+    private javax.swing.JLabel patientIdNameValueLabel;
     private javax.swing.JPanel patientJPanel;
     private javax.swing.JLabel patientNameEncounterValue;
     private javax.swing.JLabel patienthistoryLabel;
@@ -957,6 +1010,8 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JPanel personJPanel;
     private javax.swing.JLabel personNameLabel;
     private javax.swing.JTextField personNameTextField;
+    private javax.swing.JLabel respiratoryRateLabel;
+    private javax.swing.JTextField respiratoryRateTextField;
     private javax.swing.JButton saveAsPatientButton;
     private javax.swing.JButton saveChangesButton;
     private javax.swing.JButton saveEncounterButton;
