@@ -102,7 +102,7 @@ public class AdminScreen extends javax.swing.JFrame {
         allergyList = new javax.swing.JList<>();
         allergyLabel = new javax.swing.JLabel();
         selectedPatientNameLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        selectedPatientValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -353,7 +353,7 @@ public class AdminScreen extends javax.swing.JFrame {
 
         selectedPatientNameLabel.setText("Patient Name: ");
 
-        jLabel1.setText(" ");
+        selectedPatientValue.setText(" ");
 
         javax.swing.GroupLayout patientJPanelLayout = new javax.swing.GroupLayout(patientJPanel);
         patientJPanel.setLayout(patientJPanelLayout);
@@ -387,7 +387,7 @@ public class AdminScreen extends javax.swing.JFrame {
                                     .addGroup(patientJPanelLayout.createSequentialGroup()
                                         .addComponent(selectedPatientNameLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(selectedPatientValue, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(markPersonAsPatientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(355, Short.MAX_VALUE))
             .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +411,7 @@ public class AdminScreen extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(selectedPatientNameLabel)
-                            .addComponent(jLabel1))
+                            .addComponent(selectedPatientValue))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientJPanelLayout.createSequentialGroup()
@@ -579,6 +579,25 @@ public class AdminScreen extends javax.swing.JFrame {
 
     private void markPersonAsPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_markPersonAsPatientButtonActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = personDirPatTabTable.getSelectedRow();
+
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null,
+                "No record selected to mark as patient",
+                "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        } else {
+        
+        Person selectedPer = personDirectory.getPersonAtIndex(selectedRowIndex);
+        selectedPatientValue.setText(selectedPer.getName());
+        
+        
+        }
+        
+        
+
         
         
     }//GEN-LAST:event_markPersonAsPatientButtonActionPerformed
@@ -694,7 +713,6 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JLabel doctorNameLabel;
     private javax.swing.JTextField doctorNameTextField;
     private javax.swing.JPanel encounterJPanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton markPersonAsPatientButton;
     private javax.swing.JLabel patientDirectoryPatientTabLabel;
     private javax.swing.JScrollPane patientDirectoryScrollPane1;
@@ -712,6 +730,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JTextField personNameTextField;
     private javax.swing.JButton saveChangesButton;
     private javax.swing.JLabel selectedPatientNameLabel;
+    private javax.swing.JLabel selectedPatientValue;
     private javax.swing.JButton updateButton;
     private javax.swing.JButton viewButton;
     private javax.swing.JLabel zipCodeLabel;
