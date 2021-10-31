@@ -7,8 +7,6 @@ package aed_assignment4.userInterface;
 
 import aed_assignment4.model.Person;
 import aed_assignment4.model.PersonDirectory;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class AdminScreen extends javax.swing.JFrame {
     
         DefaultTableModel personDirectoryTableModel;
+        DefaultTableModel patientDirTableModel;
         PersonDirectory personDirectory;
 
 
@@ -28,8 +27,21 @@ public class AdminScreen extends javax.swing.JFrame {
      */
     public AdminScreen() {
         this.personDirectory = new PersonDirectory();
+        initPatientDirModel();
         initPersonDirModel();
         initComponents();
+    }
+    
+    private void initPatientDirModel() {
+    
+        patientDirTableModel = new DefaultTableModel();
+        patientDirTableModel.addColumn("Name");
+        patientDirTableModel.addColumn("Age");
+        patientDirTableModel.addColumn("Community");
+        patientDirTableModel.addColumn("Doctor Name");
+        patientDirTableModel.addColumn("Allergies");
+    
+    
     }
     
     private void initPersonDirModel() {
@@ -84,6 +96,13 @@ public class AdminScreen extends javax.swing.JFrame {
         personDirectoryPatientTabLabel = new javax.swing.JLabel();
         patientDirectoryScrollPane1 = new javax.swing.JScrollPane();
         patientDirectoryTable = new javax.swing.JTable();
+        doctorNameLabel = new javax.swing.JLabel();
+        doctorNameTextField = new javax.swing.JTextField();
+        allergyJListPane = new javax.swing.JScrollPane();
+        allergyList = new javax.swing.JList<>();
+        allergyLabel = new javax.swing.JLabel();
+        selectedPatientNameLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -321,18 +340,25 @@ public class AdminScreen extends javax.swing.JFrame {
 
         personDirectoryPatientTabLabel.setText("Person Directory");
 
-        patientDirectoryTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        patientDirectoryTable.setModel(patientDirTableModel);
         patientDirectoryScrollPane1.setViewportView(patientDirectoryTable);
+
+        doctorNameLabel.setText(" Doctor Name: ");
+
+        doctorNameTextField.setText(" ");
+
+        allergyList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Egg", "Pollen", "Dust Mites", "Peanut", "    " };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        allergyJListPane.setViewportView(allergyList);
+
+        allergyLabel.setText("Allergies: ");
+
+        selectedPatientNameLabel.setText("Patient Name: ");
+
+        jLabel1.setText(" ");
 
         javax.swing.GroupLayout patientJPanelLayout = new javax.swing.GroupLayout(patientJPanel);
         patientJPanel.setLayout(patientJPanelLayout);
@@ -341,13 +367,34 @@ public class AdminScreen extends javax.swing.JFrame {
             .addGroup(patientJPanelLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(patientJPanelLayout.createSequentialGroup()
-                        .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(markPersonAsPatientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(385, Short.MAX_VALUE))
+                        .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(patientJPanelLayout.createSequentialGroup()
+                                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(patientJPanelLayout.createSequentialGroup()
+                                        .addGap(44, 44, 44)
+                                        .addComponent(allergyLabel)
+                                        .addGap(37, 37, 37))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientJPanelLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(doctorNameLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(doctorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(allergyJListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(patientJPanelLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(patientJPanelLayout.createSequentialGroup()
+                                        .addComponent(selectedPatientNameLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(markPersonAsPatientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(355, Short.MAX_VALUE))
             .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientJPanelLayout.createSequentialGroup()
                     .addGap(36, 36, 36)
@@ -358,14 +405,32 @@ public class AdminScreen extends javax.swing.JFrame {
             patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientJPanelLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(markPersonAsPatientButton))
-                .addGap(18, 18, 18)
-                .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(patientJPanelLayout.createSequentialGroup()
+                        .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(patientJPanelLayout.createSequentialGroup()
+                        .addComponent(markPersonAsPatientButton)
+                        .addGap(26, 26, 26)
+                        .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(selectedPatientNameLabel)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientJPanelLayout.createSequentialGroup()
+                                .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(doctorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(doctorNameLabel))
+                                .addGap(33, 33, 33)
+                                .addComponent(allergyJListPane, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientJPanelLayout.createSequentialGroup()
+                                .addComponent(allergyLabel)
+                                .addGap(162, 162, 162)))))
                 .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientJPanelLayout.createSequentialGroup()
                     .addGap(28, 28, 28)
@@ -622,13 +687,19 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JTabbedPane adminScreenTabbedPane;
     private javax.swing.JLabel ageLabel;
     private javax.swing.JSlider ageSlider;
+    private javax.swing.JScrollPane allergyJListPane;
+    private javax.swing.JLabel allergyLabel;
+    private javax.swing.JList<String> allergyList;
     private javax.swing.JLabel cityLabel;
     private javax.swing.JTextField cityTextField;
     private javax.swing.JLabel communityLabel;
     private javax.swing.JTextField communityTextField;
     private javax.swing.JButton createButton;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel doctorNameLabel;
+    private javax.swing.JTextField doctorNameTextField;
     private javax.swing.JPanel encounterJPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton markPersonAsPatientButton;
     private javax.swing.JLabel patientDirectoryPatientTabLabel;
     private javax.swing.JScrollPane patientDirectoryScrollPane1;
@@ -645,6 +716,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JLabel personNameLabel;
     private javax.swing.JTextField personNameTextField;
     private javax.swing.JButton saveChangesButton;
+    private javax.swing.JLabel selectedPatientNameLabel;
     private javax.swing.JButton updateButton;
     private javax.swing.JButton viewButton;
     private javax.swing.JLabel zipCodeLabel;
