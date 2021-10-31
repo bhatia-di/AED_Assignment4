@@ -25,8 +25,11 @@ public class EncounterHistory {
     
     
     public int getVitalSignsCount() {
-        
         return vitalSignHistory.size();
+    }
+
+    public ArrayList<VitalSigns> getVitalSignHistory() {
+        return vitalSignHistory;
     }
     
     

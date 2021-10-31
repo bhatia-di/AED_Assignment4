@@ -5,12 +5,8 @@
  */
 package aed_assignment4.userInterface;
 
-import aed_assignment4.model.Encounter;
-import aed_assignment4.model.Patient;
-import aed_assignment4.model.PatientDirectory;
-import aed_assignment4.model.Person;
-import aed_assignment4.model.PersonDirectory;
-import aed_assignment4.model.VitalSigns;
+import aed_assignment4.model.*;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -548,19 +544,19 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(patienthistoryLabel)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bdyTempLabel)
-                    .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                        .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bdyTempLabel)
+                            .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(weightLabel)
                             .addComponent(weightTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(saveEncounterButton))
                     .addComponent(vitalSignHistoryScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         adminScreenTabbedPane.addTab("Manage Encounters", patientDirectoryTab);
@@ -765,9 +761,12 @@ public class AdminScreen extends javax.swing.JFrame {
     private void viewVitalSignHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewVitalSignHistoryButtonActionPerformed
         // TODO add your handling code here:
         
-         int selectedRowIndex = patientDirectoryTable.getSelectedRow();
+        int selectedRowIndex = patientDirectoryTable.getSelectedRow();
         Patient selectedPatient = patientDirectory.getPatientAtIndex(selectedRowIndex);
-        
+        String patientId = selectedPatient.getPatientID();
+        EncounterHistory selectedEncounterHistory = encounterList.getEncounterHistoryOfPatient(patientId);
+
+
         
 
     }//GEN-LAST:event_viewVitalSignHistoryButtonActionPerformed

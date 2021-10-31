@@ -37,6 +37,11 @@ public class Encounter {
         encounterList.put(patientId, encounterHistory);
     
     }
+
+    public EncounterHistory getEncounterHistoryOfPatient(String patientId) {
+        return encounterList.get(patientId);
+
+    }
     
     public int getEncounterMapSize() {
             return encounterList.size();
