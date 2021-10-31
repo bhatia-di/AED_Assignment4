@@ -28,9 +28,11 @@ public class Person {
         this.name = per.getName();
         this.age = per.getAge();
         this.house = new House( per.getHouse().getCommunity(),  per.getHouse().getCity(),  per.getHouse().getZipcode(),  per.getHouse().getAddress());
+    
+    
     }
-    public Person( String personId,  String name, int age,String community, String city, int zipcode, String address) {
-        this.personId = personId;
+    public Person(String name, int age,String community, String city, int zipcode, String address) {
+        this.personId = UUID.randomUUID().toString();
         this.name = name;
         this.age = age;
         this.house = new House( community,  city,  zipcode,  address);

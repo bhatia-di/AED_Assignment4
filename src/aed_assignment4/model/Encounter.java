@@ -6,6 +6,7 @@
 package aed_assignment4.model;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 /**
  *
@@ -15,7 +16,7 @@ public class Encounter {
     // Map <patientId, ENcounterHistory>
     // getPatientDir - list of patientIds
     // map - using patient id - encounterhistory get 
-    VitalSigns vitalSigns;
+    Map<String, EncounterHistory> encounterList;
     LocalDateTime vitalSignsTimeStamp;
     
 }

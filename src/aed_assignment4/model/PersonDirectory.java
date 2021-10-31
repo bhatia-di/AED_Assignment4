@@ -17,7 +17,19 @@ public class PersonDirectory {
     private LocalDateTime lastUpdatedTimestamp = LocalDateTime.now();
 
     public PersonDirectory() {
-        persons= new ArrayList<Person>();
+        persons = new ArrayList<Person>();
+        initPersonDirectory();
+      
+   }
+    
+    private void initPersonDirectory() {
+    
+        persons.add(new Person("Paul", 25, "Fenway", "Boston", 9088, "Fenway"));
+        persons.add(new Person("John", 25, "Fenway", "Boston", 9088, "Fenway"));
+        persons.add(new Person("Brain", 25, "Roxbury", "Boston", 9088, "Fenway"));
+        persons.add(new Person("Kelly", 25, "Bolyston", "Boston", 9088, "Fenway"));
+    
+    
     }
 
     public ArrayList<Person> getPeople() {
