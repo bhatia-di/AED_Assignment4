@@ -34,6 +34,7 @@ public class AdminScreen extends javax.swing.JFrame {
         initPatientDirModel();
         initPersonDirModel();
         initComponents();
+        populatePersonDirectoryTable();
     }
     
     private void initPatientDirModel() {
@@ -496,7 +497,7 @@ public class AdminScreen extends javax.swing.JFrame {
 
                 personDirectory.setPersons(personDir);
 
-                populateTableHistory();
+                populatePersonDirectoryTable();
                 JOptionPane.showConfirmDialog(null, "Created record successfully!", "Error!",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
@@ -513,7 +514,7 @@ public class AdminScreen extends javax.swing.JFrame {
             int resp = saveChangesInPersonAndReturnPerson(personRecord);
             if (resp == 1) {
                 personDirectory.setPersonAtIndex(selectedIndex, personRecord);
-                populateTableHistory();
+                populatePersonDirectoryTable();
 
                 JOptionPane.showConfirmDialog(null, "Record updated successfully!", "Error!",
                     JOptionPane.DEFAULT_OPTION,
@@ -544,7 +545,7 @@ public class AdminScreen extends javax.swing.JFrame {
         int response = JOptionPane.showConfirmDialog(null, "Do you want to delete selected record?");
         if(response == 0) personDirectory.removePersonAtIndex(selectedRowIndex);
 
-        populateTableHistory();
+        populatePersonDirectoryTable();
         //populateSearchTableHistory(personDirectory.getCars());
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -621,7 +622,7 @@ public class AdminScreen extends javax.swing.JFrame {
              
     }    
     
-    private void populateTableHistory() {
+    private void populatePersonDirectoryTable() {
         
         personDirectoryTableModel.setRowCount(0);
 
