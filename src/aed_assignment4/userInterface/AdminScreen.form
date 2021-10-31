@@ -618,25 +618,47 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="saveEncounterButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="patientDirectoryScrollPane1" alignment="0" min="-2" pref="1124" max="-2" attributes="0"/>
-                          <Component id="patientDirectoryPatientTabLabel" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
-                          <Component id="addVitalSignsButton" alignment="0" min="-2" pref="383" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="bdyTempLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="encounterPatientNameLabel" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="patientDirectoryScrollPane1" alignment="0" min="-2" pref="1124" max="-2" attributes="0"/>
+                                  <Component id="patientDirectoryPatientTabLabel" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="addVitalSignsButton" min="-2" pref="383" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Component id="viewVitalSignHistoryButton" min="-2" pref="306" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace pref="383" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="patientNameEncounterValue" min="-2" pref="260" max="-2" attributes="0"/>
-                                  <Component id="bodyTemperatureTextField" min="-2" pref="213" max="-2" attributes="0"/>
-                                  <Component id="weightTextLabel" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                  <Component id="saveEncounterButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="bdyTempLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="encounterPatientNameLabel" min="-2" pref="165" max="-2" attributes="0"/>
+                                          <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="patientNameEncounterValue" min="-2" pref="260" max="-2" attributes="0"/>
+                                          <Component id="bodyTemperatureTextField" min="-2" pref="213" max="-2" attributes="0"/>
+                                          <Component id="weightTextLabel" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="vitalSignHistoryScrollPanel" min="-2" pref="613" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="patienthistoryLabel" min="-2" pref="246" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" pref="320" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="388" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -648,11 +670,16 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="patientDirectoryScrollPane1" min="-2" pref="279" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="addVitalSignsButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="viewVitalSignHistoryButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="addVitalSignsButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="encounterPatientNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="patientNameEncounterValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="patienthistoryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -660,13 +687,18 @@
                           <Component id="bodyTemperatureTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="weightLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="weightTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="weightLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="weightTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="saveEncounterButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="vitalSignHistoryScrollPanel" min="-2" pref="424" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="saveEncounterButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="508" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" pref="172" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -713,7 +745,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="bdyTempLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="  Body Temperature: "/>
+                <Property name="text" type="java.lang.String" value="Body Temperature: "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="bodyTemperatureTextField">
@@ -738,6 +770,40 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveEncounterButtonActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="viewVitalSignHistoryButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="View Vital Sign History"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewVitalSignHistoryButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="vitalSignHistoryScrollPanel">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="vitalSignHistoryTable">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="vitalSignHistoryTableModel" type="code"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="patienthistoryLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="You are viewing history of : "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" "/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
