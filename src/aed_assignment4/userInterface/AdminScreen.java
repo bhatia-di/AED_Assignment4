@@ -627,17 +627,7 @@ public class AdminScreen extends javax.swing.JFrame {
 
         resetButton.setText("Reset");
 
-        encounterHistoryTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        encounterHistoryTable.setModel(encounterHistoryTableModel);
         encounterHistoryTableScrollPanel.setViewportView(encounterHistoryTable);
 
         javax.swing.GroupLayout encounterHistoryPanelLayout = new javax.swing.GroupLayout(encounterHistoryPanel);
