@@ -794,6 +794,13 @@ public class AdminScreen extends javax.swing.JFrame {
     private void saveEncounterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEncounterButtonActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = patientDirectoryTable.getSelectedRow();
+        
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null, "No patient selected to add encounter ", "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        }
         Patient selectedPatient = patientDirectory.getPatientAtIndex(selectedRowIndex);
 
         VitalSigns newVitalSigns = new VitalSigns();
@@ -807,8 +814,18 @@ public class AdminScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int selectedRowIndex = patientDirectoryTable.getSelectedRow();
+        
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null, "No patient selected to view encounter history", "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        }
+        
         Patient selectedPatient = patientDirectory.getPatientAtIndex(selectedRowIndex);
         String patientId = selectedPatient.getPatientID();
+        patientIdNameValueLabel.setText(patientId + " - " + selectedPatient.getName());
+
         ArrayList<VitalSigns> vitalSignsHistory = encounterList.getEncounterHistoryOfPatient(patientId)
                 .getVitalSignHistory();
         populateVitalSignHistory(vitalSignsHistory);
