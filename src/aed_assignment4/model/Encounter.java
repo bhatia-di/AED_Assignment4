@@ -47,5 +47,8 @@ public class Encounter {
             return encounterList.size();
     }
     
+    public Map<String, EncounterHistory> getEncounterList() {
+        return encounterList;    
+    }
     
 }

@@ -8,6 +8,8 @@ package aed_assignment4.userInterface;
 import aed_assignment4.model.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +22,7 @@ public class AdminScreen extends javax.swing.JFrame {
         DefaultTableModel personDirectoryTableModel;
         DefaultTableModel patientDirTableModel;
         DefaultTableModel vitalSignHistoryTableModel;
+        DefaultTableModel encounterHistoryTableModel;
         PersonDirectory personDirectory;
         PatientDirectory patientDirectory;
         Encounter encounterList;
@@ -35,9 +38,30 @@ public class AdminScreen extends javax.swing.JFrame {
         initPatientDirModel();
         initPersonDirModel();
         initVitalSignHistoryForSpecificPatient();
+        initEncounterHistoryTableModel();
         initComponents();
         populatePersonDirectoryTable();
+        populateEncounterHistoryTable();
     }
+    
+    private void initEncounterHistoryTableModel() {
+        
+        encounterHistoryTableModel = new DefaultTableModel();
+        encounterHistoryTableModel.addColumn("Patient Name");
+        encounterHistoryTableModel.addColumn("Community");
+        encounterHistoryTableModel.addColumn("Age");
+        encounterHistoryTableModel.addColumn("Doctor Name");
+        encounterHistoryTableModel.addColumn("Respiratory Rate");
+        encounterHistoryTableModel.addColumn("Heart Rate");
+        encounterHistoryTableModel.addColumn("Blood Pressure");
+        encounterHistoryTableModel.addColumn("Weight");
+        encounterHistoryTableModel.addColumn("Body Temperature");
+    
+    
+    
+    }
+    
+    
     
     
     private void initVitalSignHistoryForSpecificPatient() {
@@ -152,6 +176,9 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterHistoryTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        adminScreenTabbedPane.setForeground(new java.awt.Color(0, 0, 102));
+        adminScreenTabbedPane.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 
         personDirTable.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         personDirTable.setForeground(new java.awt.Color(0, 0, 102));
@@ -983,6 +1010,41 @@ public class AdminScreen extends javax.swing.JFrame {
       }
         
     }    
+    
+    
+    private void populateEncounterHistoryTable() {
+    
+        encounterHistoryTableModel.setColumnCount(0);
+        
+        for(Map.Entry<String, EncounterHistory> encounterEntry: encounterList.getEncounterList().entrySet()) {
+                Patient p = patientDirectory.getPatientByPatientId(encounterEntry.getKey());
+                VitalSigns latestVitalSign = encounterEntry.getValue()
+                        .getVitalSignHistory().get(0);
+                String[] rowData = {
+                    p.getName(),
+                    p.getHouse().getCommunity(),
+                    Integer.toString(p.getAge()),
+                    p.getDoctorName(),
+                    Integer.toString(latestVitalSign.getRespiratoryRate()),
+                    Integer.toString(latestVitalSign.getHeartRate()),
+                    Integer.toString(latestVitalSign.getBloodPressure()),                    
+                    Integer.toString(latestVitalSign.getWeight()),
+                    Integer.toString(latestVitalSign.getBodyTemperature())
+
+                    
+                    
+                    
+                };
+            encounterHistoryTableModel.addRow(rowData);
+                
+                
+        
+        
+        }
+        
+    
+    
+    }
     
     
     private int saveChangesInPersonAndReturnPerson(Person personRecord) {

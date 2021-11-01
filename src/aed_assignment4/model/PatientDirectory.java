@@ -7,6 +7,7 @@ package aed_assignment4.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -50,6 +51,14 @@ public class PatientDirectory {
 
         return patients.get(index);
 
+    }
+    
+    
+    public Patient getPatientByPatientId (String patientId) {
+        return patients.stream().filter(patient -> patient.getPatientID().equals(patientId))
+                .collect(Collectors.toList())
+                .get(0);
+    
     }
 
 
