@@ -145,11 +145,11 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterHistoryHeaderLabel = new javax.swing.JLabel();
         communityFilterLabel = new javax.swing.JLabel();
         communityFilterCombobox = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        abnormalRadioButton = new javax.swing.JRadioButton();
+        searchButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        encounterHistoryTableScrollPanel = new javax.swing.JScrollPane();
+        encounterHistoryTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -621,13 +621,13 @@ public class AdminScreen extends javax.swing.JFrame {
 
         communityFilterCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jRadioButton1.setText(" Abnormal");
+        abnormalRadioButton.setText(" Abnormal");
 
-        jButton1.setText("Search");
+        searchButton.setText("Search");
 
-        jButton2.setText("Reset");
+        resetButton.setText("Reset");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        encounterHistoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -638,7 +638,7 @@ public class AdminScreen extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        encounterHistoryTableScrollPanel.setViewportView(encounterHistoryTable);
 
         javax.swing.GroupLayout encounterHistoryPanelLayout = new javax.swing.GroupLayout(encounterHistoryPanel);
         encounterHistoryPanel.setLayout(encounterHistoryPanelLayout);
@@ -651,17 +651,17 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(encounterHistoryTableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
                                 .addComponent(communityFilterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(communityFilterCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton1)
+                                .addComponent(abnormalRadioButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1)
+                                .addComponent(searchButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)))))
+                                .addComponent(resetButton)))))
                 .addContainerGap(333, Short.MAX_VALUE))
         );
         encounterHistoryPanelLayout.setVerticalGroup(
@@ -673,12 +673,12 @@ public class AdminScreen extends javax.swing.JFrame {
                 .addGroup(encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(communityFilterLabel)
                     .addComponent(communityFilterCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(abnormalRadioButton)
+                    .addComponent(searchButton)
+                    .addComponent(resetButton))
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addComponent(encounterHistoryTableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         adminScreenTabbedPane.addTab("Encounter History", encounterHistoryPanel);
@@ -1067,6 +1067,7 @@ public class AdminScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton abnormalRadioButton;
     private javax.swing.JButton addVitalSignsButton;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressTextField;
@@ -1091,15 +1092,12 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JTextField doctorNameTextField;
     private javax.swing.JLabel encounterHistoryHeaderLabel;
     private javax.swing.JPanel encounterHistoryPanel;
+    private javax.swing.JTable encounterHistoryTable;
+    private javax.swing.JScrollPane encounterHistoryTableScrollPanel;
     private javax.swing.JLabel encounterPatientNameLabel;
     private javax.swing.JLabel heartRateLabel;
     private javax.swing.JTextField heartRateTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton markPersonAsPatientButton;
     private javax.swing.JLabel patientDirectoryPatientTabLabel;
     private javax.swing.JScrollPane patientDirectoryScrollPane1;
@@ -1119,11 +1117,13 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JPanel personJPanel;
     private javax.swing.JLabel personNameLabel;
     private javax.swing.JTextField personNameTextField;
+    private javax.swing.JButton resetButton;
     private javax.swing.JLabel respiratoryRateLabel;
     private javax.swing.JTextField respiratoryRateTextField;
     private javax.swing.JButton saveAsPatientButton;
     private javax.swing.JButton saveChangesButton;
     private javax.swing.JButton saveEncounterButton;
+    private javax.swing.JButton searchButton;
     private javax.swing.JLabel selectedPatientNameLabel;
     private javax.swing.JLabel selectedPatientValue;
     private javax.swing.JButton updateButton;
