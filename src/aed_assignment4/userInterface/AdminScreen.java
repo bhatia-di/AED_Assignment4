@@ -804,7 +804,13 @@ public class AdminScreen extends javax.swing.JFrame {
         Patient selectedPatient = patientDirectory.getPatientAtIndex(selectedRowIndex);
 
         VitalSigns newVitalSigns = new VitalSigns();
+        newVitalSigns.setRespiratoryRate(Integer.valueOf(respiratoryRateTextField.getText().trim()));
+        newVitalSigns.setHeartRate(Integer.valueOf(heartRateTextField.getText().trim()));
+        newVitalSigns.setBloodPressure(Integer.valueOf(bloodPressureTextField.getText().trim()));
+        newVitalSigns.setWeight(Integer.valueOf(weightTextLabel.getText().trim()));
         newVitalSigns.setBodyTemperature(Integer.valueOf(bodyTemperatureTextField.getText().trim()));
+        
+        
         encounterList.addEncounter(selectedPatient.getPatientID(), newVitalSigns);
         System.out.println("Encounter List " + encounterList.getEncounterMapSize());
        
