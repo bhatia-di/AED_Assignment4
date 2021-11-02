@@ -450,7 +450,7 @@ public class AdminScreen extends javax.swing.JFrame {
                 .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientJPanelLayout.createSequentialGroup()
                         .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(446, Short.MAX_VALUE))
+                        .addContainerGap(451, Short.MAX_VALUE))
                     .addGroup(patientJPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,7 +473,7 @@ public class AdminScreen extends javax.swing.JFrame {
                 .addGroup(patientJPanelLayout.createSequentialGroup()
                     .addGap(36, 36, 36)
                     .addComponent(personDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1276, Short.MAX_VALUE)))
+                    .addContainerGap(1281, Short.MAX_VALUE)))
         );
         patientJPanelLayout.setVerticalGroup(
             patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -510,6 +510,7 @@ public class AdminScreen extends javax.swing.JFrame {
 
         patientDirectoryTab.setForeground(new java.awt.Color(0, 0, 102));
 
+        patientDirectoryPatientTabLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         patientDirectoryPatientTabLabel.setForeground(new java.awt.Color(0, 0, 102));
         patientDirectoryPatientTabLabel.setText("Patient Directory");
 
@@ -527,15 +528,21 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        encounterPatientNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         encounterPatientNameLabel.setForeground(new java.awt.Color(0, 0, 102));
         encounterPatientNameLabel.setText("Patient Name: ");
 
+        patientNameEncounterValue.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         patientNameEncounterValue.setText(" ");
 
+        bdyTempLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        bdyTempLabel.setForeground(new java.awt.Color(0, 0, 102));
         bdyTempLabel.setText("Body Temperature: ");
 
         bodyTemperatureTextField.setText(" ");
 
+        weightLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        weightLabel.setForeground(new java.awt.Color(0, 0, 102));
         weightLabel.setText("Weight: ");
 
         weightTextLabel.setText(" ");
@@ -559,16 +566,20 @@ public class AdminScreen extends javax.swing.JFrame {
         vitalSignHistoryTable.setModel(vitalSignHistoryTableModel);
         vitalSignHistoryScrollPanel.setViewportView(vitalSignHistoryTable);
 
+        patienthistoryLabel.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         patienthistoryLabel.setForeground(new java.awt.Color(0, 0, 102));
         patienthistoryLabel.setText("You are viewing history of : ");
 
+        patientIdNameValueLabel.setForeground(new java.awt.Color(0, 0, 102));
         patientIdNameValueLabel.setText(" ");
 
+        respiratoryRateLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         respiratoryRateLabel.setForeground(new java.awt.Color(0, 0, 102));
         respiratoryRateLabel.setText("Respiratory Rate:");
 
         respiratoryRateTextField.setText(" ");
 
+        heartRateLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         heartRateLabel.setForeground(new java.awt.Color(0, 0, 102));
         heartRateLabel.setText("Heart Rate:");
 
@@ -579,6 +590,7 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Blood Pressure:");
 
@@ -590,12 +602,12 @@ public class AdminScreen extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(patientDirectoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(patientDirectoryTabLayout.createSequentialGroup()
                         .addComponent(addVitalSignsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(295, 295, 295)
-                        .addComponent(viewVitalSignHistoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(383, Short.MAX_VALUE))
+                        .addComponent(viewVitalSignHistoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(patientDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(388, Short.MAX_VALUE))
             .addGroup(patientDirectoryTabLayout.createSequentialGroup()
                 .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientDirectoryTabLayout.createSequentialGroup()
@@ -674,7 +686,7 @@ public class AdminScreen extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(saveEncounterButton))
                     .addComponent(vitalSignHistoryScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         adminScreenTabbedPane.addTab("Manage Encounters", patientDirectoryTab);
@@ -747,7 +759,7 @@ public class AdminScreen extends javax.swing.JFrame {
                                 .addComponent(searchButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(resetButton)))))
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
         encounterHistoryPanelLayout.setVerticalGroup(
             encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
