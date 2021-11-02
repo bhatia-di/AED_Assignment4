@@ -412,6 +412,9 @@
         </Container>
         <Container class="javax.swing.JPanel" name="patientJPanel">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="0" red="0" type="rgb"/>
+            </Property>
             <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -430,7 +433,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="personDirectoryPatTabScollPanel" min="-2" pref="1063" max="-2" attributes="0"/>
-                              <EmptySpace pref="451" max="32767" attributes="0"/>
+                              <EmptySpace pref="446" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -460,8 +463,8 @@
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="personDirectoryPatientTabLabel" min="-2" pref="139" max="-2" attributes="0"/>
-                          <EmptySpace pref="1365" max="32767" attributes="0"/>
+                          <Component id="personDirectoryPatientTabLabel" min="-2" pref="223" max="-2" attributes="0"/>
+                          <EmptySpace pref="1276" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -540,6 +543,9 @@
             </Container>
             <Component class="javax.swing.JButton" name="markPersonAsPatientButton">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Mark Person as Patient"/>
               </Properties>
               <Events>
@@ -548,11 +554,20 @@
             </Component>
             <Component class="javax.swing.JLabel" name="personDirectoryPatientTabLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="22" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Person Directory"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="doctorNameLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value=" Doctor Name: "/>
               </Properties>
             </Component>
@@ -570,6 +585,9 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="allergyList">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                       <StringArray count="5">
                         <StringItem index="0" value="Egg"/>
@@ -588,11 +606,17 @@
             </Container>
             <Component class="javax.swing.JLabel" name="allergyLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Allergies: "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="selectedPatientNameLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Patient Name: "/>
               </Properties>
             </Component>
@@ -612,6 +636,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="patientDirectoryTab">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Manage Encounters">
@@ -744,6 +773,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="patientDirectoryPatientTabLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Patient Directory"/>
               </Properties>
             </Component>
@@ -756,15 +788,25 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="patientDirectoryTable">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="19" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="patientDirTableModel" type="code"/>
                     </Property>
+                    <Property name="rowHeight" type="int" value="40"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="addVitalSignsButton">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Add Vital Signs"/>
               </Properties>
               <Events>
@@ -773,6 +815,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="encounterPatientNameLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Patient Name: "/>
               </Properties>
             </Component>
@@ -811,6 +856,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="viewVitalSignHistoryButton">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="View Vital Sign History"/>
               </Properties>
               <Events>
@@ -826,6 +874,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="vitalSignHistoryTable">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="vitalSignHistoryTableModel" type="code"/>
                     </Property>
@@ -835,6 +886,9 @@
             </Container>
             <Component class="javax.swing.JLabel" name="patienthistoryLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="You are viewing history of : "/>
               </Properties>
             </Component>
@@ -845,6 +899,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="respiratoryRateLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Respiratory Rate:"/>
               </Properties>
             </Component>
@@ -855,6 +912,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="heartRateLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Heart Rate:"/>
               </Properties>
             </Component>
@@ -868,6 +928,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Blood Pressure:"/>
               </Properties>
             </Component>
@@ -876,6 +939,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="encounterHistoryPanel">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Encounter History">
@@ -942,11 +1010,20 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="encounterHistoryHeaderLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="20" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Encounter History"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="communityFilterLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Community:"/>
               </Properties>
             </Component>
@@ -962,11 +1039,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="abnormalRadioButton">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value=" Abnormal"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="searchButton">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Search"/>
               </Properties>
               <Events>
@@ -975,6 +1058,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="resetButton">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Clear Filters"/>
               </Properties>
               <Events>
@@ -990,20 +1076,33 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="encounterHistoryTable">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="19" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="encounterHistoryTableModel" type="code"/>
                     </Property>
+                    <Property name="rowHeight" type="int" value="40"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="vitalSignLabel">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Vital Sign"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="vitalSignHistoryComboBox">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="6">
                     <StringItem index="0" value="Blood Pressure"/>

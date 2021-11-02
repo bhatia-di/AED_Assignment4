@@ -391,6 +391,7 @@ public class AdminScreen extends javax.swing.JFrame {
 
         adminScreenTabbedPane.addTab("Person", personJPanel);
 
+        patientJPanel.setForeground(new java.awt.Color(0, 0, 102));
         patientJPanel.setAutoscrolls(true);
 
         personDirPatTabTable.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
@@ -400,6 +401,7 @@ public class AdminScreen extends javax.swing.JFrame {
         personDirPatTabTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         personDirectoryPatTabScollPanel.setViewportView(personDirPatTabTable);
 
+        markPersonAsPatientButton.setForeground(new java.awt.Color(0, 0, 102));
         markPersonAsPatientButton.setText("Mark Person as Patient");
         markPersonAsPatientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -407,12 +409,16 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        personDirectoryPatientTabLabel.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        personDirectoryPatientTabLabel.setForeground(new java.awt.Color(0, 0, 102));
         personDirectoryPatientTabLabel.setText("Person Directory");
 
+        doctorNameLabel.setForeground(new java.awt.Color(0, 0, 102));
         doctorNameLabel.setText(" Doctor Name: ");
 
         doctorNameTextField.setText(" ");
 
+        allergyList.setForeground(new java.awt.Color(0, 0, 102));
         allergyList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Egg", "Pollen", "Dust Mites", "Peanut", "    " };
             public int getSize() { return strings.length; }
@@ -420,8 +426,10 @@ public class AdminScreen extends javax.swing.JFrame {
         });
         allergyJListPane.setViewportView(allergyList);
 
+        allergyLabel.setForeground(new java.awt.Color(0, 0, 102));
         allergyLabel.setText("Allergies: ");
 
+        selectedPatientNameLabel.setForeground(new java.awt.Color(0, 0, 102));
         selectedPatientNameLabel.setText("Patient Name: ");
 
         selectedPatientValue.setText(" ");
@@ -442,7 +450,7 @@ public class AdminScreen extends javax.swing.JFrame {
                 .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientJPanelLayout.createSequentialGroup()
                         .addComponent(personDirectoryPatTabScollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(451, Short.MAX_VALUE))
+                        .addContainerGap(446, Short.MAX_VALUE))
                     .addGroup(patientJPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,8 +472,8 @@ public class AdminScreen extends javax.swing.JFrame {
             .addGroup(patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientJPanelLayout.createSequentialGroup()
                     .addGap(36, 36, 36)
-                    .addComponent(personDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1365, Short.MAX_VALUE)))
+                    .addComponent(personDirectoryPatientTabLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1276, Short.MAX_VALUE)))
         );
         patientJPanelLayout.setVerticalGroup(
             patientJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -500,11 +508,18 @@ public class AdminScreen extends javax.swing.JFrame {
 
         adminScreenTabbedPane.addTab("Patient", patientJPanel);
 
+        patientDirectoryTab.setForeground(new java.awt.Color(0, 0, 102));
+
+        patientDirectoryPatientTabLabel.setForeground(new java.awt.Color(0, 0, 102));
         patientDirectoryPatientTabLabel.setText("Patient Directory");
 
+        patientDirectoryTable.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        patientDirectoryTable.setForeground(new java.awt.Color(0, 0, 102));
         patientDirectoryTable.setModel(patientDirTableModel);
+        patientDirectoryTable.setRowHeight(40);
         patientDirectoryScrollPane1.setViewportView(patientDirectoryTable);
 
+        addVitalSignsButton.setForeground(new java.awt.Color(0, 0, 102));
         addVitalSignsButton.setText("Add Vital Signs");
         addVitalSignsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -512,6 +527,7 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        encounterPatientNameLabel.setForeground(new java.awt.Color(0, 0, 102));
         encounterPatientNameLabel.setText("Patient Name: ");
 
         patientNameEncounterValue.setText(" ");
@@ -531,6 +547,7 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        viewVitalSignHistoryButton.setForeground(new java.awt.Color(0, 0, 102));
         viewVitalSignHistoryButton.setText("View Vital Sign History");
         viewVitalSignHistoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -538,17 +555,21 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        vitalSignHistoryTable.setForeground(new java.awt.Color(0, 0, 102));
         vitalSignHistoryTable.setModel(vitalSignHistoryTableModel);
         vitalSignHistoryScrollPanel.setViewportView(vitalSignHistoryTable);
 
+        patienthistoryLabel.setForeground(new java.awt.Color(0, 0, 102));
         patienthistoryLabel.setText("You are viewing history of : ");
 
         patientIdNameValueLabel.setText(" ");
 
+        respiratoryRateLabel.setForeground(new java.awt.Color(0, 0, 102));
         respiratoryRateLabel.setText("Respiratory Rate:");
 
         respiratoryRateTextField.setText(" ");
 
+        heartRateLabel.setForeground(new java.awt.Color(0, 0, 102));
         heartRateLabel.setText("Heart Rate:");
 
         heartRateTextField.setText(" ");
@@ -558,6 +579,7 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Blood Pressure:");
 
         javax.swing.GroupLayout patientDirectoryTabLayout = new javax.swing.GroupLayout(patientDirectoryTab);
@@ -657,14 +679,21 @@ public class AdminScreen extends javax.swing.JFrame {
 
         adminScreenTabbedPane.addTab("Manage Encounters", patientDirectoryTab);
 
+        encounterHistoryPanel.setForeground(new java.awt.Color(0, 0, 102));
+
+        encounterHistoryHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        encounterHistoryHeaderLabel.setForeground(new java.awt.Color(0, 0, 102));
         encounterHistoryHeaderLabel.setText("Encounter History");
 
+        communityFilterLabel.setForeground(new java.awt.Color(0, 0, 102));
         communityFilterLabel.setText("Community:");
 
         communityFilterCombobox.setModel(communityComboxModel);
 
+        abnormalRadioButton.setForeground(new java.awt.Color(0, 0, 102));
         abnormalRadioButton.setText(" Abnormal");
 
+        searchButton.setForeground(new java.awt.Color(0, 0, 102));
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -672,6 +701,7 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        resetButton.setForeground(new java.awt.Color(0, 0, 102));
         resetButton.setText("Clear Filters");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -679,11 +709,16 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
+        encounterHistoryTable.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        encounterHistoryTable.setForeground(new java.awt.Color(0, 0, 102));
         encounterHistoryTable.setModel(encounterHistoryTableModel);
+        encounterHistoryTable.setRowHeight(40);
         encounterHistoryTableScrollPanel.setViewportView(encounterHistoryTable);
 
+        vitalSignLabel.setForeground(new java.awt.Color(0, 0, 102));
         vitalSignLabel.setText("Vital Sign");
 
+        vitalSignHistoryComboBox.setForeground(new java.awt.Color(0, 0, 102));
         vitalSignHistoryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blood Pressure", "Respiratory Rate", "Heart Rate", "Body Temperature", "Body Weight", " " }));
 
         javax.swing.GroupLayout encounterHistoryPanelLayout = new javax.swing.GroupLayout(encounterHistoryPanel);
