@@ -27,8 +27,8 @@ public class VitalSigns {
         case "Blood Pressure" : {
             
             int age = currentPatient.getAge();
-            if (age < 12 && bloodPressure < 80 && bloodPressure > 110) return true;
-            if (age > 13 && bloodPressure < 110 && bloodPressure > 120) return true;
+            if (age < 12 && (bloodPressure < 80 || bloodPressure > 110)) return true;
+            if (age > 13 && (bloodPressure < 110 || bloodPressure > 120)) return true;
             break;       
         
         }
@@ -37,8 +37,8 @@ public class VitalSigns {
         case "Respiratory Rate" : {
             
             int age = currentPatient.getAge();
-            if (age < 12 && respiratoryRate < 20 && respiratoryRate > 30) return true;
-            if (age > 13 && respiratoryRate < 12 && respiratoryRate > 20) return true;
+            if (age < 12 && (respiratoryRate < 20 || respiratoryRate > 30)) return true;
+            if (age > 13 && (respiratoryRate < 12 && respiratoryRate > 20)) return true;
             break;       
         
         }
@@ -47,8 +47,8 @@ public class VitalSigns {
         case "Heart Rate" : {
             
             int age = currentPatient.getAge();
-            if (age < 12 && heartRate < 70 && heartRate > 110) return true;
-            if (age > 13 && heartRate < 55 && heartRate > 105) return true;
+            if (age < 12 && (heartRate < 70 || heartRate > 110)) return true;
+            if (age > 13 && (heartRate < 55 || heartRate > 105)) return true;
             break;       
         
         }

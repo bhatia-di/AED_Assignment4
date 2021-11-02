@@ -673,6 +673,11 @@ public class AdminScreen extends javax.swing.JFrame {
         });
 
         resetButton.setText("Clear Filters");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
 
         encounterHistoryTable.setModel(encounterHistoryTableModel);
         encounterHistoryTableScrollPanel.setViewportView(encounterHistoryTable);
@@ -1006,6 +1011,10 @@ public class AdminScreen extends javax.swing.JFrame {
                     
                 };
                 
+                System.out.println("is Patient community" + isPatientOfSelectedCommunity);
+                System.out.println("is abnormal selected " + isAbnormalSelected);
+                System.out.println("is VS abnotmal " + isAbnormal);
+                
                 
              if (isPatientOfSelectedCommunity && (isAbnormalSelected ? isAbnormal : true)) encounterHistoryTableModel.addRow(rowData);
                 
@@ -1013,6 +1022,13 @@ public class AdminScreen extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        // TODO add your handling code here:
+        
+        populateEncounterHistoryTable();
+        
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     private void populateVitalSignHistory(ArrayList<VitalSigns> vitalSignsHistory) {
 
