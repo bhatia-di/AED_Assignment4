@@ -56,7 +56,6 @@ public class VitalSigns {
         
         case "Body Temperature" : {
             
-            int age = currentPatient.getAge();
             if (bodyTemperature < 36 && bodyTemperature > 37) return true;
             break;       
         

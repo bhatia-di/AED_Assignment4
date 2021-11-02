@@ -188,7 +188,7 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterHistoryTableScrollPanel = new javax.swing.JScrollPane();
         encounterHistoryTable = new javax.swing.JTable();
         vitalSignLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        vitalSignHistoryComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -679,7 +679,7 @@ public class AdminScreen extends javax.swing.JFrame {
 
         vitalSignLabel.setText("Vital Sign");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blood Pressure", "Respiratory Rate", "Heart Rate", "Body Temperature", "Body Weight", " " }));
+        vitalSignHistoryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blood Pressure", "Respiratory Rate", "Heart Rate", "Body Temperature", "Body Weight", " " }));
 
         javax.swing.GroupLayout encounterHistoryPanelLayout = new javax.swing.GroupLayout(encounterHistoryPanel);
         encounterHistoryPanel.setLayout(encounterHistoryPanelLayout);
@@ -702,7 +702,7 @@ public class AdminScreen extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(vitalSignLabel)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(vitalSignHistoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(searchButton)
                                 .addGap(18, 18, 18)
@@ -722,7 +722,7 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(searchButton)
                     .addComponent(resetButton)
                     .addComponent(vitalSignLabel)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vitalSignHistoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(encounterHistoryTableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(421, Short.MAX_VALUE))
@@ -980,6 +980,14 @@ public class AdminScreen extends javax.swing.JFrame {
                 Patient p = patientDirectory.getPatientByPatientId(encounterEntry.getKey());
                 VitalSigns latestVitalSign = encounterEntry.getValue()
                         .getVitalSignHistory().get(0);
+                boolean isPatientOfSelectedCommunity = p.getHouse().getCommunity()
+                        .equals(communityComboxModel.getSelectedItem().toString());
+                boolean isAbnormalSelected = abnormalRadioButton.isSelected();
+                String selectedVitalSignName = vitalSignHistoryComboBox.getSelectedItem().toString();
+                boolean isAbnormal = latestVitalSign.isVitalSignNormal(selectedVitalSignName,
+                        p);
+                
+                
                 
                 
                 
@@ -997,7 +1005,9 @@ public class AdminScreen extends javax.swing.JFrame {
                     
                     
                 };
-            encounterHistoryTableModel.addRow(rowData);
+                
+                
+             if (isPatientOfSelectedCommunity && (isAbnormalSelected ? isAbnormal : true)) encounterHistoryTableModel.addRow(rowData);
                 
                 
         }
@@ -1213,7 +1223,6 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JLabel encounterPatientNameLabel;
     private javax.swing.JLabel heartRateLabel;
     private javax.swing.JTextField heartRateTextField;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton markPersonAsPatientButton;
     private javax.swing.JLabel patientDirectoryPatientTabLabel;
@@ -1246,6 +1255,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JButton updateButton;
     private javax.swing.JButton viewButton;
     private javax.swing.JButton viewVitalSignHistoryButton;
+    private javax.swing.JComboBox<String> vitalSignHistoryComboBox;
     private javax.swing.JScrollPane vitalSignHistoryScrollPanel;
     private javax.swing.JTable vitalSignHistoryTable;
     private javax.swing.JLabel vitalSignLabel;

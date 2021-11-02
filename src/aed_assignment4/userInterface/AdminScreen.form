@@ -904,7 +904,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="vitalSignLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" min="-2" pref="190" max="-2" attributes="0"/>
+                                      <Component id="vitalSignHistoryComboBox" min="-2" pref="190" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="searchButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -930,7 +930,7 @@
                           <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="resetButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="vitalSignLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vitalSignHistoryComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="encounterHistoryTableScrollPanel" min="-2" pref="573" max="-2" attributes="0"/>
@@ -999,7 +999,7 @@
                 <Property name="text" type="java.lang.String" value="Vital Sign"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="vitalSignHistoryComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="6">
