@@ -1093,8 +1093,9 @@ public class AdminScreen extends javax.swing.JFrame {
         
         for(Map.Entry<String, EncounterHistory> encounterEntry: encounterList.getEncounterList().entrySet()) {
                 Patient p = patientDirectory.getPatientByPatientId(encounterEntry.getKey());
-                VitalSigns latestVitalSign = encounterEntry.getValue()
-                        .getVitalSignHistory().get(0);
+                ArrayList<VitalSigns> history = encounterEntry.getValue()
+                        .getVitalSignHistory(); 
+                VitalSigns latestVitalSign = history.get(history.size() -1);
                 String[] rowData = {
                     p.getName(),
                     p.getHouse().getCommunity(),
