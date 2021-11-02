@@ -16,9 +16,61 @@ public class VitalSigns {
     private int respiratoryRate;
     private int heartRate;
     private int bloodPressure;
-    private int weight;
-    private int bodyTemperature;
+    private double bodyTemperature;
     private LocalDateTime lastUpdatedTimeStamp = LocalDateTime.now();
+    
+    
+    public boolean isVitalSignNormal (String vitalSignName, Patient currentPatient) {
+    
+    switch(vitalSignName) {
+    
+        case "Blood Pressure" : {
+            
+            int age = currentPatient.getAge();
+            if (age < 12 && bloodPressure < 80 && bloodPressure > 110) return true;
+            if (age > 13 && bloodPressure < 110 && bloodPressure > 120) return true;
+            break;       
+        
+        }
+        
+        
+        case "Respiratory Rate" : {
+            
+            int age = currentPatient.getAge();
+            if (age < 12 && respiratoryRate < 20 && respiratoryRate > 30) return true;
+            if (age > 13 && respiratoryRate < 12 && respiratoryRate > 20) return true;
+            break;       
+        
+        }
+        
+        
+        case "Heart Rate" : {
+            
+            int age = currentPatient.getAge();
+            if (age < 12 && heartRate < 70 && heartRate > 110) return true;
+            if (age > 13 && heartRate < 55 && heartRate > 105) return true;
+            break;       
+        
+        }
+        
+        
+        case "Body Temperature" : {
+            
+            int age = currentPatient.getAge();
+            if (bodyTemperature < 36 && bodyTemperature > 37) return true;
+            break;       
+        
+        }
+        
+    
+    
+    }
+    
+    return false;
+    
+    
+    
+    }
 
     public int getRespiratoryRate() {
         return respiratoryRate;
@@ -44,19 +96,11 @@ public class VitalSigns {
         this.bloodPressure = bloodPressure;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public int getBodyTemperature() {
+    public double getBodyTemperature() {
         return bodyTemperature;
     }
 
-    public void setBodyTemperature(int bodyTemperature) {
+    public void setBodyTemperature(double bodyTemperature) {
         this.bodyTemperature = bodyTemperature;
     }
 

@@ -10,6 +10,8 @@ import aed_assignment4.model.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +27,7 @@ public class AdminScreen extends javax.swing.JFrame {
         DefaultTableModel encounterHistoryTableModel;
         PersonDirectory personDirectory;
         PatientDirectory patientDirectory;
+        DefaultComboBoxModel communityComboxModel;
         Encounter encounterList;
 
 
@@ -35,13 +38,23 @@ public class AdminScreen extends javax.swing.JFrame {
         this.personDirectory = new PersonDirectory();
         this.patientDirectory = new PatientDirectory();
         this.encounterList = new Encounter();
+        this.communityComboxModel = new DefaultComboBoxModel();
         initPatientDirModel();
         initPersonDirModel();
         initVitalSignHistoryForSpecificPatient();
         initEncounterHistoryTableModel();
+        initCommunityComboxModel();
         initComponents();
         populatePersonDirectoryTable();
-        populateEncounterHistoryTable();
+    }
+    
+    
+    private void initCommunityComboxModel() {
+        
+        for (Person person: personDirectory.getPeople()) {
+        String community = person.getHouse().getCommunity();
+        if (communityComboxModel.getIndexOf(community) == -1 ) communityComboxModel.addElement(community);
+        }
     }
     
     private void initEncounterHistoryTableModel() {
@@ -174,6 +187,8 @@ public class AdminScreen extends javax.swing.JFrame {
         resetButton = new javax.swing.JButton();
         encounterHistoryTableScrollPanel = new javax.swing.JScrollPane();
         encounterHistoryTable = new javax.swing.JTable();
+        vitalSignLabel = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -563,29 +578,29 @@ public class AdminScreen extends javax.swing.JFrame {
                 .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientDirectoryTabLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(saveEncounterButton)
-                            .addGroup(patientDirectoryTabLayout.createSequentialGroup()
-                                .addComponent(encounterPatientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(patientNameEncounterValue, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(saveEncounterButton))
                     .addGroup(patientDirectoryTabLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bdyTempLabel)
-                            .addComponent(weightLabel)
-                            .addComponent(heartRateLabel)
-                            .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(respiratoryRateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(28, 28, 28)
-                        .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bodyTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(respiratoryRateTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(weightTextLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
-                            .addComponent(heartRateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bloodPressureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                                .addComponent(encounterPatientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(patientNameEncounterValue, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(patientDirectoryTabLayout.createSequentialGroup()
+                                .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bdyTempLabel)
+                                    .addComponent(weightLabel)
+                                    .addComponent(heartRateLabel)
+                                    .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(respiratoryRateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(28, 28, 28)
+                                .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(bloodPressureTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(heartRateTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(respiratoryRateTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(weightTextLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                    .addComponent(bodyTemperatureTextField))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(patientDirectoryTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(vitalSignHistoryScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -646,16 +661,25 @@ public class AdminScreen extends javax.swing.JFrame {
 
         communityFilterLabel.setText("Community:");
 
-        communityFilterCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        communityFilterCombobox.setModel(communityComboxModel);
 
         abnormalRadioButton.setText(" Abnormal");
 
         searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
-        resetButton.setText("Reset");
+        resetButton.setText("Clear Filters");
 
         encounterHistoryTable.setModel(encounterHistoryTableModel);
         encounterHistoryTableScrollPanel.setViewportView(encounterHistoryTable);
+
+        vitalSignLabel.setText("Vital Sign");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blood Pressure", "Respiratory Rate", "Heart Rate", "Body Temperature", "Body Weight", " " }));
 
         javax.swing.GroupLayout encounterHistoryPanelLayout = new javax.swing.GroupLayout(encounterHistoryPanel);
         encounterHistoryPanel.setLayout(encounterHistoryPanelLayout);
@@ -676,8 +700,12 @@ public class AdminScreen extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(abnormalRadioButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(searchButton)
+                                .addComponent(vitalSignLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchButton)
+                                .addGap(18, 18, 18)
                                 .addComponent(resetButton)))))
                 .addContainerGap(333, Short.MAX_VALUE))
         );
@@ -692,7 +720,9 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(communityFilterCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(abnormalRadioButton)
                     .addComponent(searchButton)
-                    .addComponent(resetButton))
+                    .addComponent(resetButton)
+                    .addComponent(vitalSignLabel)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(encounterHistoryTableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(421, Short.MAX_VALUE))
@@ -780,6 +810,9 @@ public class AdminScreen extends javax.swing.JFrame {
             }
 
         }
+        
+        
+        initCommunityComboxModel();
     }//GEN-LAST:event_saveChangesButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -901,12 +934,12 @@ public class AdminScreen extends javax.swing.JFrame {
         newVitalSigns.setRespiratoryRate(Integer.valueOf(respiratoryRateTextField.getText().trim()));
         newVitalSigns.setHeartRate(Integer.valueOf(heartRateTextField.getText().trim()));
         newVitalSigns.setBloodPressure(Integer.valueOf(bloodPressureTextField.getText().trim()));
-        newVitalSigns.setWeight(Integer.valueOf(weightTextLabel.getText().trim()));
         newVitalSigns.setBodyTemperature(Integer.valueOf(bodyTemperatureTextField.getText().trim()));
         
         
         encounterList.addEncounter(selectedPatient.getPatientID(), newVitalSigns);
         System.out.println("Encounter List " + encounterList.getEncounterMapSize());
+        populateEncounterHistoryTable();
        
     }//GEN-LAST:event_saveEncounterButtonActionPerformed
 
@@ -938,6 +971,39 @@ public class AdminScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_heartRateTextFieldActionPerformed
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        
+        encounterHistoryTableModel.setRowCount(0);
+        
+        for(Map.Entry<String, EncounterHistory> encounterEntry: encounterList.getEncounterList().entrySet()) {
+                Patient p = patientDirectory.getPatientByPatientId(encounterEntry.getKey());
+                VitalSigns latestVitalSign = encounterEntry.getValue()
+                        .getVitalSignHistory().get(0);
+                
+                
+                
+                String[] rowData = {
+                    p.getName(),
+                    p.getHouse().getCommunity(),
+                    Integer.toString(p.getAge()),
+                    p.getDoctorName(),
+                    Integer.toString(latestVitalSign.getRespiratoryRate()),
+                    Integer.toString(latestVitalSign.getHeartRate()),
+                    Integer.toString(latestVitalSign.getBloodPressure()),                    
+                    Double.toString(latestVitalSign.getBodyTemperature())
+
+                    
+                    
+                    
+                };
+            encounterHistoryTableModel.addRow(rowData);
+                
+                
+        }
+        
+    }//GEN-LAST:event_searchButtonActionPerformed
+
     private void populateVitalSignHistory(ArrayList<VitalSigns> vitalSignsHistory) {
 
         vitalSignHistoryTableModel.setRowCount(0);
@@ -946,8 +1012,7 @@ public class AdminScreen extends javax.swing.JFrame {
                     Integer.toString(vitalSigns.getRespiratoryRate()),
                     Integer.toString(vitalSigns.getHeartRate()),
                     Integer.toString(vitalSigns.getBloodPressure()),
-                    Integer.toString(vitalSigns.getWeight()),
-                    Integer.toString(vitalSigns.getBodyTemperature())
+                    Double.toString(vitalSigns.getBodyTemperature())
             };
             vitalSignHistoryTableModel.addRow(rowData);
         }
@@ -1014,7 +1079,7 @@ public class AdminScreen extends javax.swing.JFrame {
     
     private void populateEncounterHistoryTable() {
     
-        encounterHistoryTableModel.setColumnCount(0);
+        encounterHistoryTableModel.setRowCount(0);
         
         for(Map.Entry<String, EncounterHistory> encounterEntry: encounterList.getEncounterList().entrySet()) {
                 Patient p = patientDirectory.getPatientByPatientId(encounterEntry.getKey());
@@ -1028,8 +1093,7 @@ public class AdminScreen extends javax.swing.JFrame {
                     Integer.toString(latestVitalSign.getRespiratoryRate()),
                     Integer.toString(latestVitalSign.getHeartRate()),
                     Integer.toString(latestVitalSign.getBloodPressure()),                    
-                    Integer.toString(latestVitalSign.getWeight()),
-                    Integer.toString(latestVitalSign.getBodyTemperature())
+                    Double.toString(latestVitalSign.getBodyTemperature())
 
                     
                     
@@ -1149,6 +1213,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JLabel encounterPatientNameLabel;
     private javax.swing.JLabel heartRateLabel;
     private javax.swing.JTextField heartRateTextField;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton markPersonAsPatientButton;
     private javax.swing.JLabel patientDirectoryPatientTabLabel;
@@ -1183,6 +1248,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JButton viewVitalSignHistoryButton;
     private javax.swing.JScrollPane vitalSignHistoryScrollPanel;
     private javax.swing.JTable vitalSignHistoryTable;
+    private javax.swing.JLabel vitalSignLabel;
     private javax.swing.JLabel weightLabel;
     private javax.swing.JTextField weightTextLabel;
     private javax.swing.JLabel zipCodeLabel;
