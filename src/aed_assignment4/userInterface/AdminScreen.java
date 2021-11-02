@@ -986,7 +986,7 @@ public class AdminScreen extends javax.swing.JFrame {
                 VitalSigns latestVitalSign = encounterEntry.getValue()
                         .getVitalSignHistory().get(0);
                 boolean isPatientOfSelectedCommunity = p.getHouse().getCommunity()
-                        .equals(communityComboxModel.getSelectedItem().toString());
+                        .equalsIgnoreCase(communityComboxModel.getSelectedItem().toString());
                 boolean isAbnormalSelected = abnormalRadioButton.isSelected();
                 String selectedVitalSignName = vitalSignHistoryComboBox.getSelectedItem().toString();
                 boolean isAbnormal = latestVitalSign.isVitalSignNormal(selectedVitalSignName,

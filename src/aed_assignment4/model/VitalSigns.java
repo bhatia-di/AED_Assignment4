@@ -27,8 +27,8 @@ public class VitalSigns {
         case "Blood Pressure" : {
             
             int age = currentPatient.getAge();
-            if (age < 12 && (bloodPressure < 80 || bloodPressure > 110)) return true;
-            if (age > 13 && (bloodPressure < 110 || bloodPressure > 120)) return true;
+            if ((age < 12 && bloodPressure < 80) || (age < 12 && bloodPressure > 110)) return true;
+            if ((age > 13 && bloodPressure < 110) ||(age > 13 && bloodPressure > 120)) return true;
             break;       
         
         }
