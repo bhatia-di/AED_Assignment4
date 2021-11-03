@@ -284,7 +284,8 @@ public class AdminScreen extends javax.swing.JFrame {
             }
         });
 
-        saveChangesButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        saveChangesButton.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        saveChangesButton.setForeground(new java.awt.Color(0, 0, 102));
         saveChangesButton.setText("Save");
         saveChangesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -415,7 +416,7 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(zipCodeLabel))
                 .addGap(39, 39, 39)
                 .addComponent(saveChangesButton)
-                .addContainerGap(403, Short.MAX_VALUE))
+                .addContainerGap(404, Short.MAX_VALUE))
         );
 
         adminScreenTabbedPane.addTab("Person", personJPanel);
@@ -465,8 +466,11 @@ public class AdminScreen extends javax.swing.JFrame {
         selectedPatientNameLabel.setForeground(new java.awt.Color(0, 0, 102));
         selectedPatientNameLabel.setText("Patient Name: ");
 
+        selectedPatientValue.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        selectedPatientValue.setForeground(new java.awt.Color(0, 0, 102));
         selectedPatientValue.setText(" ");
 
+        saveAsPatientButton.setForeground(new java.awt.Color(0, 0, 102));
         saveAsPatientButton.setText("Save as Patient");
         saveAsPatientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -563,6 +567,7 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterPatientNameLabel.setText("Patient Name: ");
 
         patientNameEncounterValue.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        patientNameEncounterValue.setForeground(new java.awt.Color(0, 0, 102));
         patientNameEncounterValue.setText(" ");
 
         bdyTempLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
@@ -601,6 +606,7 @@ public class AdminScreen extends javax.swing.JFrame {
         patienthistoryLabel.setForeground(new java.awt.Color(0, 0, 102));
         patienthistoryLabel.setText("You are viewing history of : ");
 
+        patientIdNameValueLabel.setFont(new java.awt.Font("Segoe UI", 2, 19)); // NOI18N
         patientIdNameValueLabel.setForeground(new java.awt.Color(0, 0, 102));
         patientIdNameValueLabel.setText(" ");
 
@@ -826,11 +832,13 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterHistoryHeaderLabel.setForeground(new java.awt.Color(0, 0, 102));
         encounterHistoryHeaderLabel.setText("Encounter History");
 
+        communityFilterLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         communityFilterLabel.setForeground(new java.awt.Color(0, 0, 102));
         communityFilterLabel.setText("Community:");
 
         communityFilterCombobox.setModel(communityComboxModel);
 
+        abnormalRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         abnormalRadioButton.setForeground(new java.awt.Color(0, 0, 102));
         abnormalRadioButton.setText(" Abnormal");
 
@@ -856,6 +864,7 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterHistoryTable.setRowHeight(40);
         encounterHistoryTableScrollPanel.setViewportView(encounterHistoryTable);
 
+        vitalSignLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         vitalSignLabel.setForeground(new java.awt.Color(0, 0, 102));
         vitalSignLabel.setText("Vital Sign");
 
@@ -1281,7 +1290,7 @@ public class AdminScreen extends javax.swing.JFrame {
         }
 
         int response = JOptionPane.showConfirmDialog(null, "Do you want to delete selected patient record?");
-        if(response == 0) personDirectory.removePersonAtIndex(selectedRowIndex);
+        if(response == 0) patientDirectory.removePatientAtIndex(selectedRowIndex);
 
         populatePatientDirectoryTable();
         
