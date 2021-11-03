@@ -1191,6 +1191,13 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterList.addEncounter(selectedPatient.getPatientID(), newVitalSigns);
         System.out.println("Encounter List " + encounterList.getEncounterMapSize());
         populateEncounterHistoryTable();
+        
+        JOptionPane.showConfirmDialog(null, 
+                "Encounter saved",
+                "Success!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+        
        
     }//GEN-LAST:event_saveEncounterButtonActionPerformed
 
