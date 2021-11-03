@@ -5,6 +5,8 @@
  */
 package aed_assignment4.util;
 
+import aed_assignment4.model.City;
+import aed_assignment4.model.Community;
 import aed_assignment4.model.VitalSigns;
 
 /**
@@ -43,4 +45,26 @@ public class Util {
     }
     return true;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    String commString = new Community().getCommunity();
+    String city = new City().getCity();
+    
 }
