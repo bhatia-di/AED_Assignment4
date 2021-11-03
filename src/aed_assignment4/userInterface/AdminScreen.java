@@ -275,6 +275,11 @@ public class AdminScreen extends javax.swing.JFrame {
         ageSlider.setPaintLabels(true);
         ageSlider.setSnapToTicks(true);
         ageSlider.setToolTipText("");
+        ageSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ageSliderStateChanged(evt);
+            }
+        });
 
         saveChangesButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         saveChangesButton.setText("Save");
@@ -1259,6 +1264,12 @@ public class AdminScreen extends javax.swing.JFrame {
         populatePatientDirectoryTable();
         
     }//GEN-LAST:event_deletePatientBtnActionPerformed
+
+    private void ageSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ageSliderStateChanged
+        // TODO add your handling code here:
+        
+        ageLabelValue.setText(Integer.toString(ageSlider.getValue()));
+    }//GEN-LAST:event_ageSliderStateChanged
 
     private void populateVitalSignHistory(ArrayList<VitalSigns> vitalSignsHistory) {
 

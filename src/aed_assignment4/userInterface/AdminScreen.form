@@ -330,6 +330,9 @@
                 <Property name="snapToTicks" type="boolean" value="true"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="ageSliderStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="saveChangesButton">
               <Properties>
