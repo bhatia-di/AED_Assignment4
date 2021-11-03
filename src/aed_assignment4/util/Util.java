@@ -66,5 +66,5 @@ public class Util {
 
     String commString = new Community().getCommunity();
     String city = new City().getCity();
-    
+
 }
