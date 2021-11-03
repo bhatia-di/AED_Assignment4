@@ -70,8 +70,21 @@ public class PatientDirectory {
 
     }
 
-    public void removePersonAtIndex(int index) {
+    public void removePatientAtIndex(int index) {
         patients.remove(getPatientAtIndex(index));
         setLastUpdatedTimestamp(LocalDateTime.now());
+    }
+    
+    
+    public void removePatientWithPatientId(String personId) {
+    
+        for(Patient p: patients) {
+        
+        if (p.getPersonId().equals(personId)) {
+                
+            patients.remove(p);
+        }
+        
+        }
     }
 }

@@ -46,10 +46,7 @@ public class Person {
         return personId;
     }
 
-    public void setPersonId(String personId) {
-        this.personId = personId;
-    }
-
+    
     public String getName() {
         return name;
     }

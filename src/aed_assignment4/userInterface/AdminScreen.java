@@ -143,6 +143,7 @@ public class AdminScreen extends javax.swing.JFrame {
         zipCodeTextField = new javax.swing.JTextField();
         communityLabel = new javax.swing.JLabel();
         communityTextField = new javax.swing.JTextField();
+        ageLabelValue = new javax.swing.JLabel();
         patientJPanel = new javax.swing.JPanel();
         personDirectoryPatTabScollPanel = new javax.swing.JScrollPane();
         personDirPatTabTable = new javax.swing.JTable();
@@ -311,6 +312,8 @@ public class AdminScreen extends javax.swing.JFrame {
         communityTextField.setForeground(new java.awt.Color(0, 0, 102));
         communityTextField.setText(" ");
 
+        ageLabelValue.setText(" ");
+
         javax.swing.GroupLayout personJPanelLayout = new javax.swing.GroupLayout(personJPanel);
         personJPanel.setLayout(personJPanelLayout);
         personJPanelLayout.setHorizontalGroup(
@@ -344,7 +347,6 @@ public class AdminScreen extends javax.swing.JFrame {
                             .addComponent(cityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ageSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(personNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(personJPanelLayout.createSequentialGroup()
@@ -358,7 +360,11 @@ public class AdminScreen extends javax.swing.JFrame {
                                     .addGap(43, 43, 43)
                                     .addComponent(communityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(communityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(communityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(personJPanelLayout.createSequentialGroup()
+                                .addComponent(ageSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ageLabelValue, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         personJPanelLayout.setVerticalGroup(
@@ -380,10 +386,14 @@ public class AdminScreen extends javax.swing.JFrame {
                     .addComponent(personNameLabel)
                     .addComponent(personNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ageLabel)
-                    .addComponent(ageSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(ageLabel)
+                        .addComponent(ageSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(personJPanelLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(ageLabelValue)))
+                .addGap(26, 26, 26)
                 .addGroup(personJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addressLabel)
                     .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -603,6 +613,11 @@ public class AdminScreen extends javax.swing.JFrame {
         jLabel1.setText("Blood Pressure:");
 
         deletePatientBtn.setText("Delete");
+        deletePatientBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePatientBtnActionPerformed(evt);
+            }
+        });
 
         updatePatientButton.setText("Update ");
         updatePatientButton.addActionListener(new java.awt.event.ActionListener() {
@@ -922,7 +937,9 @@ public class AdminScreen extends javax.swing.JFrame {
                 personDirectory.setPersons(personDir);
 
                 populatePersonDirectoryTable();
-                JOptionPane.showConfirmDialog(null, "Created record successfully!", "Error!",
+                JOptionPane.showConfirmDialog(null, 
+                        "Created person record successfully!", 
+                        "Success!",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
@@ -940,7 +957,9 @@ public class AdminScreen extends javax.swing.JFrame {
                 personDirectory.setPersonAtIndex(selectedIndex, personRecord);
                 populatePersonDirectoryTable();
 
-                JOptionPane.showConfirmDialog(null, "Record updated successfully!", "Error!",
+                JOptionPane.showConfirmDialog(null, 
+                        "Person Record updated successfully!", 
+                        "Success!",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
@@ -970,9 +989,12 @@ public class AdminScreen extends javax.swing.JFrame {
         }
 
         int response = JOptionPane.showConfirmDialog(null, "Do you want to delete selected record?");
-        if(response == 0) personDirectory.removePersonAtIndex(selectedRowIndex);
-
+        if(response == 0) {
+        personDirectory.removePersonAtIndex(selectedRowIndex);
+        patientDirectory.removePatientWithPatientId(personDirectory.getPersonAtIndex(selectedRowIndex).getPersonId());
+        }
         populatePersonDirectoryTable();
+        populatePatientDirectoryTable();
         //populateSearchTableHistory(personDirectory.getCars());
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -999,7 +1021,8 @@ public class AdminScreen extends javax.swing.JFrame {
         int selectedRowIndex = personDirTable.getSelectedRow();
 
         if(selectedRowIndex == -1) {
-            JOptionPane.showConfirmDialog(null, "No record selected to update the row", "Error!",
+            JOptionPane.showConfirmDialog(null,
+                    "No record selected to update the row", "Error!",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.PLAIN_MESSAGE);
             return;
@@ -1216,6 +1239,27 @@ public class AdminScreen extends javax.swing.JFrame {
         
     }//GEN-LAST:event_updatePatientButtonActionPerformed
 
+    private void deletePatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePatientBtnActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRowIndex = patientDirectoryTable.getSelectedRow();
+
+        if(selectedRowIndex == -1) {
+            JOptionPane.showConfirmDialog(null,
+                "No patient record selected to delete the row",
+                "Error!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+            return;
+        }
+
+        int response = JOptionPane.showConfirmDialog(null, "Do you want to delete selected patient record?");
+        if(response == 0) personDirectory.removePersonAtIndex(selectedRowIndex);
+
+        populatePatientDirectoryTable();
+        
+    }//GEN-LAST:event_deletePatientBtnActionPerformed
+
     private void populateVitalSignHistory(ArrayList<VitalSigns> vitalSignsHistory) {
 
         vitalSignHistoryTableModel.setRowCount(0);
@@ -1242,7 +1286,7 @@ public class AdminScreen extends javax.swing.JFrame {
         personNameTextField.setText(perRecord.getName());
         ageSlider.setValue(perRecord.getAge());
         addressTextField.setText(perRecord.getHouse().getAddress());
-        zipCodeTextField.setText(perRecord.getHouse().getCommunity());
+        communityTextField.setText(perRecord.getHouse().getCommunity());
         cityTextField.setText(perRecord.getHouse().getCity());
         zipCodeTextField.setText(String.valueOf(perRecord.getHouse().getZipcode()));
              
@@ -1402,6 +1446,7 @@ public class AdminScreen extends javax.swing.JFrame {
     private javax.swing.JTextField addressTextField;
     private javax.swing.JTabbedPane adminScreenTabbedPane;
     private javax.swing.JLabel ageLabel;
+    private javax.swing.JLabel ageLabelValue;
     private javax.swing.JSlider ageSlider;
     private javax.swing.JScrollPane allergyJListPane;
     private javax.swing.JScrollPane allergyJListPane1;
