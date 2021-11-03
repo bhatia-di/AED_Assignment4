@@ -69,7 +69,6 @@ public class AdminScreen extends javax.swing.JFrame {
         encounterHistoryTableModel.addColumn("Respiratory Rate");
         encounterHistoryTableModel.addColumn("Heart Rate");
         encounterHistoryTableModel.addColumn("Blood Pressure");
-        encounterHistoryTableModel.addColumn("Weight");
         encounterHistoryTableModel.addColumn("Body Temperature");
     
     
@@ -84,8 +83,7 @@ public class AdminScreen extends javax.swing.JFrame {
         vitalSignHistoryTableModel.addColumn("Respiratory Rate");
         vitalSignHistoryTableModel.addColumn("Heart Rate");
         vitalSignHistoryTableModel.addColumn("Blood Pressure");
-        vitalSignHistoryTableModel.addColumn("Weight");
-        vitalSignHistoryTableModel.addColumn("Body Temperature");       
+        vitalSignHistoryTableModel.addColumn("Body Temperature");
     
     } 
     
