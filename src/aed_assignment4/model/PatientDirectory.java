@@ -83,6 +83,21 @@ public class PatientDirectory {
         if (p.getPersonId().equals(personId)) {
                 
             patients.remove(p);
+            break;
+        }
+        
+        }
+    }
+    
+    
+    
+    public boolean isPersonAPatient(String personId) {
+    
+        for(Patient p: patients) {
+        
+        if (p.getPersonId().equals(personId)) {
+                
+            return true;
         }
         
         }
