@@ -1235,8 +1235,10 @@ public class AdminScreen extends javax.swing.JFrame {
         
         for(Map.Entry<String, EncounterHistory> encounterEntry: encounterList.getEncounterList().entrySet()) {
                 Patient p = patientDirectory.getPatientByPatientId(encounterEntry.getKey());
+                ArrayList<VitalSigns> vitalSignsArrayList = encounterEntry.getValue()
+                        .getVitalSignHistory();
                 VitalSigns latestVitalSign = encounterEntry.getValue()
-                        .getVitalSignHistory().get(0);
+                        .getVitalSignHistory().get(vitalSignsArrayList.size() - 1);
                 boolean isPatientOfSelectedCommunity = p.getHouse().getCommunity()
                         .equalsIgnoreCase(communityComboxModel.getSelectedItem().toString());
                 boolean isAbnormalSelected = abnormalRadioButton.isSelected();
