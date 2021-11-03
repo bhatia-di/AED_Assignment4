@@ -158,17 +158,6 @@ public class AdminScreen extends javax.swing.JFrame {
         selectedPatientNameLabel = new javax.swing.JLabel();
         selectedPatientValue = new javax.swing.JLabel();
         saveAsPatientButton = new javax.swing.JButton();
-        encounterHistoryPanel = new javax.swing.JPanel();
-        encounterHistoryHeaderLabel = new javax.swing.JLabel();
-        communityFilterLabel = new javax.swing.JLabel();
-        communityFilterCombobox = new javax.swing.JComboBox<>();
-        abnormalRadioButton = new javax.swing.JRadioButton();
-        searchButton = new javax.swing.JButton();
-        resetButton = new javax.swing.JButton();
-        encounterHistoryTableScrollPanel = new javax.swing.JScrollPane();
-        encounterHistoryTable = new javax.swing.JTable();
-        vitalSignLabel = new javax.swing.JLabel();
-        vitalSignHistoryComboBox = new javax.swing.JComboBox<>();
         patientDirectoryTab = new javax.swing.JPanel();
         patientDirectoryPatientTabLabel = new javax.swing.JLabel();
         patientDirectoryScrollPane1 = new javax.swing.JScrollPane();
@@ -203,6 +192,17 @@ public class AdminScreen extends javax.swing.JFrame {
         updatePatientObjectBtn = new javax.swing.JButton();
         patientNameValueText = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        encounterHistoryPanel = new javax.swing.JPanel();
+        encounterHistoryHeaderLabel = new javax.swing.JLabel();
+        communityFilterLabel = new javax.swing.JLabel();
+        communityFilterCombobox = new javax.swing.JComboBox<>();
+        abnormalRadioButton = new javax.swing.JRadioButton();
+        searchButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        encounterHistoryTableScrollPanel = new javax.swing.JScrollPane();
+        encounterHistoryTable = new javax.swing.JTable();
+        vitalSignLabel = new javax.swing.JLabel();
+        vitalSignHistoryComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -543,100 +543,6 @@ public class AdminScreen extends javax.swing.JFrame {
 
         adminScreenTabbedPane.addTab("Patient", patientJPanel);
 
-        encounterHistoryPanel.setForeground(new java.awt.Color(0, 0, 102));
-
-        encounterHistoryHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        encounterHistoryHeaderLabel.setForeground(new java.awt.Color(0, 0, 102));
-        encounterHistoryHeaderLabel.setText("Encounter History");
-
-        communityFilterLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
-        communityFilterLabel.setForeground(new java.awt.Color(0, 0, 102));
-        communityFilterLabel.setText("Community:");
-
-        communityFilterCombobox.setModel(communityComboxModel);
-
-        abnormalRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
-        abnormalRadioButton.setForeground(new java.awt.Color(0, 0, 102));
-        abnormalRadioButton.setText(" Abnormal");
-
-        searchButton.setForeground(new java.awt.Color(0, 0, 102));
-        searchButton.setText("Search");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
-        resetButton.setForeground(new java.awt.Color(0, 0, 102));
-        resetButton.setText("Clear Filters");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
-            }
-        });
-
-        encounterHistoryTable.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
-        encounterHistoryTable.setForeground(new java.awt.Color(0, 0, 102));
-        encounterHistoryTable.setModel(encounterHistoryTableModel);
-        encounterHistoryTable.setRowHeight(40);
-        encounterHistoryTableScrollPanel.setViewportView(encounterHistoryTable);
-
-        vitalSignLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
-        vitalSignLabel.setForeground(new java.awt.Color(0, 0, 102));
-        vitalSignLabel.setText("Vital Sign");
-
-        vitalSignHistoryComboBox.setForeground(new java.awt.Color(0, 0, 102));
-        vitalSignHistoryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blood Pressure", "Respiratory Rate", "Heart Rate", "Body Temperature", "Body Weight", " " }));
-
-        javax.swing.GroupLayout encounterHistoryPanelLayout = new javax.swing.GroupLayout(encounterHistoryPanel);
-        encounterHistoryPanel.setLayout(encounterHistoryPanelLayout);
-        encounterHistoryPanelLayout.setHorizontalGroup(
-            encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(encounterHistoryHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(encounterHistoryTableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
-                                .addComponent(communityFilterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(communityFilterCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(abnormalRadioButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(vitalSignLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(vitalSignHistoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(searchButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(resetButton)))))
-                .addContainerGap(338, Short.MAX_VALUE))
-        );
-        encounterHistoryPanelLayout.setVerticalGroup(
-            encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(encounterHistoryHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(communityFilterLabel)
-                    .addComponent(communityFilterCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(abnormalRadioButton)
-                    .addComponent(searchButton)
-                    .addComponent(resetButton)
-                    .addComponent(vitalSignLabel)
-                    .addComponent(vitalSignHistoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(encounterHistoryTableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(422, Short.MAX_VALUE))
-        );
-
-        adminScreenTabbedPane.addTab("Encounter History", encounterHistoryPanel);
-
         patientDirectoryTab.setForeground(new java.awt.Color(0, 0, 102));
 
         patientDirectoryPatientTabLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -921,6 +827,100 @@ public class AdminScreen extends javax.swing.JFrame {
 
         adminScreenTabbedPane.addTab("Manage Encounters", patientDirectoryTab);
 
+        encounterHistoryPanel.setForeground(new java.awt.Color(0, 0, 102));
+
+        encounterHistoryHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        encounterHistoryHeaderLabel.setForeground(new java.awt.Color(0, 0, 102));
+        encounterHistoryHeaderLabel.setText("Encounter History");
+
+        communityFilterLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        communityFilterLabel.setForeground(new java.awt.Color(0, 0, 102));
+        communityFilterLabel.setText("Community:");
+
+        communityFilterCombobox.setModel(communityComboxModel);
+
+        abnormalRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        abnormalRadioButton.setForeground(new java.awt.Color(0, 0, 102));
+        abnormalRadioButton.setText(" Abnormal");
+
+        searchButton.setForeground(new java.awt.Color(0, 0, 102));
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
+        resetButton.setForeground(new java.awt.Color(0, 0, 102));
+        resetButton.setText("Clear Filters");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+
+        encounterHistoryTable.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        encounterHistoryTable.setForeground(new java.awt.Color(0, 0, 102));
+        encounterHistoryTable.setModel(encounterHistoryTableModel);
+        encounterHistoryTable.setRowHeight(40);
+        encounterHistoryTableScrollPanel.setViewportView(encounterHistoryTable);
+
+        vitalSignLabel.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        vitalSignLabel.setForeground(new java.awt.Color(0, 0, 102));
+        vitalSignLabel.setText("Vital Sign");
+
+        vitalSignHistoryComboBox.setForeground(new java.awt.Color(0, 0, 102));
+        vitalSignHistoryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blood Pressure", "Respiratory Rate", "Heart Rate", "Body Temperature", "Body Weight", " " }));
+
+        javax.swing.GroupLayout encounterHistoryPanelLayout = new javax.swing.GroupLayout(encounterHistoryPanel);
+        encounterHistoryPanel.setLayout(encounterHistoryPanelLayout);
+        encounterHistoryPanelLayout.setHorizontalGroup(
+            encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(encounterHistoryHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(encounterHistoryTableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
+                                .addComponent(communityFilterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(communityFilterCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(abnormalRadioButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(vitalSignLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(vitalSignHistoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(resetButton)))))
+                .addContainerGap(338, Short.MAX_VALUE))
+        );
+        encounterHistoryPanelLayout.setVerticalGroup(
+            encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(encounterHistoryPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(encounterHistoryHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(encounterHistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(communityFilterLabel)
+                    .addComponent(communityFilterCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(abnormalRadioButton)
+                    .addComponent(searchButton)
+                    .addComponent(resetButton)
+                    .addComponent(vitalSignLabel)
+                    .addComponent(vitalSignHistoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(encounterHistoryTableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(422, Short.MAX_VALUE))
+        );
+
+        adminScreenTabbedPane.addTab("Encounter History", encounterHistoryPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1027,8 +1027,9 @@ public class AdminScreen extends javax.swing.JFrame {
 
         int response = JOptionPane.showConfirmDialog(null, "Do you want to delete selected record?");
         if(response == 0) {
+        String delPersonId = personDirectory.getPersonAtIndex(selectedRowIndex).getPersonId();
         personDirectory.removePersonAtIndex(selectedRowIndex);
-        patientDirectory.removePatientWithPatientId(personDirectory.getPersonAtIndex(selectedRowIndex).getPersonId());
+        patientDirectory.removePatientWithPatientId(delPersonId);
         }
         populatePersonDirectoryTable();
         populatePatientDirectoryTable();
