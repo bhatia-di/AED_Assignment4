@@ -1078,6 +1078,16 @@ public class AdminScreen extends javax.swing.JFrame {
          
         int selectedRowIndex = personDirPatTabTable.getSelectedRow();
         Person selectedPerson = personDirectory.getPersonAtIndex(selectedRowIndex);
+        if (patientDirectory.isPersonAPatient(selectedPerson.getPersonId())) {
+                JOptionPane.showConfirmDialog(null, 
+                        "Patient already exists", "Error!",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+
+        
+        return;
+        }
+        
         Patient patient = new Patient(selectedPerson);
         patient.setDoctorName(doctorNameTextField.getText());
         patient.setAllergies(allergyList.getSelectedValuesList());
@@ -1155,7 +1165,7 @@ public class AdminScreen extends javax.swing.JFrame {
         
         Patient selectedPatient = patientDirectory.getPatientAtIndex(selectedRowIndex);
         String patientId = selectedPatient.getPatientID();
-        patientIdNameValueLabel.setText(patientId + " - " + selectedPatient.getName());
+        patientIdNameValueLabel.setText(selectedPatient.getName() + " --- " + patientId);
 
         ArrayList<VitalSigns> vitalSignsHistory = encounterList.getEncounterHistoryOfPatient(patientId)
                 .getVitalSignHistory();
